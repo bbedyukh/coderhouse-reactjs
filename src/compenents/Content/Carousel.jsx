@@ -49,6 +49,7 @@ export default function Carousel(props) {
     return (
         <CarouselLib
             indicators={false}
+            navButtonsAlwaysInvisible={true}
             animation={"slide"}>
             {images.map((item, i) => <Item key={i} item={item} />)}
         </CarouselLib>

@@ -1,6 +1,6 @@
 import Navbar from './compenents/Navbar/Navbar.jsx'
 import Content from './compenents/Content/Content.jsx'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, Divider } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -29,6 +29,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme}>
         <Navbar />
+        <Divider />
         <Content />
       </ThemeProvider>
     </div>

@@ -35,7 +35,7 @@ export default function Navbar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" elevation={0} style={{ borderBottom: '1px solid', borderColor: '#c6c6c6' }}>
+            <AppBar position="static" elevation={0}>
                 <Container maxWidth="md">
                     <Toolbar>
                         <Box mx={1}>
