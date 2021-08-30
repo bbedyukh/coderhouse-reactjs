@@ -4,7 +4,7 @@ import { createMuiTheme, ThemeProvider, Divider } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
-    mode: "light",
+    type: "light",
     primary: {
       main: '#FFF',
       light: '#F0E5CF',
@@ -12,16 +12,38 @@ const theme = createMuiTheme({
       contrastText: '#2D3748'
     },
     secondary: {
-      main: '#3F51B5'
+      main: '#3F51B5',
     },
-    typography: {
-      fontSize: 14,
-      fontWeightLight: 300,
-      fontWeightRegular: 400,
-      fontWeightMedium: 500,
-      fontWeightBold: 700,
+    action: {
+      main: '#F0E5CF'
+    },
+    text: {
+      primary: '#2D3748'
     }
-  }
+  },
+  typography: {
+    fontFamily: 'Lato',
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+    h1: {
+      fontWeight: 800,
+      fontSize: '3.75rem'
+    },
+    h6: {
+      fontWeight: 700,
+      fontSize: '1.25rem'
+    },
+    body1: {
+      fontSize: '1rem',
+      fontFamily: 'Lato',
+      fontWeight: 400,
+      lineHeight: 1.5
+    }
+  },
+  
 })
 
 function App() {

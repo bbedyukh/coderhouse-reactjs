@@ -8,16 +8,18 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import logo from '../../assets/images/logo-black.png'
-import Switch from '@material-ui/core/Switch';
 import { Brightness4, Brightness5 } from '@material-ui/icons'
 import IconButton from '@material-ui/core/IconButton';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     title: {
-        flexGrow: 1,
+        flexGrow: 1
     },
 }));
 
@@ -28,6 +30,17 @@ export default function Navbar() {
         checkedA: true,
         checkedB: true,
     });
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
 
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -44,11 +57,37 @@ export default function Navbar() {
                         <Typography variant="h6" className={classes.title}>
                             Don Boedo
                         </Typography>
-                        {/* <Box mx={1}>
-                            <Button color="inherit">Sucursales</Button>
-                        </Box> */}
                         <Box mx={1}>
-                            <Button variant="outlined" color="inherit">Carta digital</Button>
+                            <Button
+                                color="inherit"
+                                endIcon={<ArrowDropDownIcon />}
+                                aria-controls="simple-menu"
+                                aria-haspopup="true"
+                                onClick={handleClick}
+                            >Carta digital</Button>
+                            <Menu
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose}>Pizzas</MenuItem>
+                                <MenuItem onClick={handleClose}>Empanadas</MenuItem>
+                                <MenuItem onClick={handleClose}>Porciones</MenuItem>
+                                <MenuItem onClick={handleClose}>Calzones</MenuItem>
+                                <MenuItem onClick={handleClose}>Tartas</MenuItem>
+                                <MenuItem onClick={handleClose}>Porciones</MenuItem>
+                                <MenuItem onClick={handleClose}>Sandwich</MenuItem>
+                                <MenuItem onClick={handleClose}>Cocina</MenuItem>
+                                <MenuItem onClick={handleClose}>Ensaladas</MenuItem>
+                                <MenuItem onClick={handleClose}>Pastas</MenuItem>
+                                <MenuItem onClick={handleClose}>Postres</MenuItem>
+                                <MenuItem onClick={handleClose}>Agua y gaseosas</MenuItem>
+                                <MenuItem onClick={handleClose}>Cervezas</MenuItem>
+                                <MenuItem onClick={handleClose}>Vinos</MenuItem>
+                                <MenuItem onClick={handleClose}>Cafetería</MenuItem>
+                            </Menu>
                         </Box>
                         <Box mx={1}>
                             <Button variant="contained" color="secondary">Pedidos</Button>
