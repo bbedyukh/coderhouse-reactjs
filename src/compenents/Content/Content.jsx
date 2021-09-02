@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
     containerPadding: {
-        padding: '2rem 0'
+        padding: '2rem 1rem'
     },
     h1: {
         textAlign: 'center'
@@ -21,7 +21,7 @@ export default function Content() {
                 <Carousel />
                 <Divider />
             </Container>
-            <Container maxWidth="md" className={classes.containerPadding}>
+            <Container maxWidth="lg" className={classes.containerPadding}>
                 <Grid container>
                     <Grid item xs={12}>
                         {/* <Typography variant="h1">Build accessible React apps with speed</Typography> */}

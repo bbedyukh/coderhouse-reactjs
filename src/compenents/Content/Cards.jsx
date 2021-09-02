@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import PhoneIcon from '@material-ui/icons/Phone';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -28,8 +30,12 @@ export default function Cards() {
     const classes = useStyles();
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
+        <Grid
+            container
+            className={classes.root}
+            spacing={3}
+        >
+            <Grid item xs={12} sm={3}>
                 <Grid
                     container
                     direction="column"
@@ -48,7 +54,7 @@ export default function Cards() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={3}>
                 <Grid
                     container
                     direction="column"
@@ -63,15 +69,48 @@ export default function Cards() {
                         <Typography variant="h6" color="textPrimary">Pedí por teléfono</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <Typography variant="body1" color="textSecondary">Pagá online o al recibir tu pedido.</Typography>
+                        <Typography variant="body1" color="textSecondary">Sucursal Boedo | 4931-6898</Typography>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
-                <Paper className={classes.paper}>xs=3</Paper>
+            <Grid item xs={12} sm={3}>
+                <Grid
+                    container
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="flex-start"
+                    spacing={1}
+                >
+                    <Grid item xs={12}>
+                        <WhatsAppIcon className={classes.iconBackground} fontSize="large" color="secondary" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="h6" color="textPrimary">Pedí por WhatsApp</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="body1" color="textSecondary">Hace tu pedido al +54 9 1122 3344</Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+                <Grid
+                    container
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="flex-start"
+                    spacing={1}
+                >
+                    <Grid item xs={12}>
+                        <WhatsAppIcon className={classes.iconBackground} fontSize="large" color="secondary" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="h6" color="textPrimary">Pedí por WhatsApp</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="body1" color="textSecondary">Hace tu pedido al +54 9 1122 3344</Typography>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
-
-
     )
 }

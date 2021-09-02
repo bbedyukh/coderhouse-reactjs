@@ -1,8 +1,9 @@
+import { ThemeProvider } from '@material-ui/core'
+import { createTheme } from '@material-ui/core/styles'
+import { ItemListContainer } from './compenents/ItemListContainer.jsx'
 import Navbar from './compenents/Navbar/Navbar.jsx'
-import Content from './compenents/Content/Content.jsx'
-import { createMuiTheme, ThemeProvider, Divider } from '@material-ui/core';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     type: "light",
     primary: {
@@ -22,7 +23,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: 'Lato',
+    fontFamily: 'Roboto',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
@@ -34,27 +35,24 @@ const theme = createMuiTheme({
     },
     h6: {
       fontWeight: 700,
-      fontSize: '1.25rem'
+      fontSize: '1rem'
     },
     body1: {
-      fontSize: '1rem',
-      fontFamily: 'Lato',
+      fontSize: '0.9rem',
+      fontFamily: 'Roboto',
       fontWeight: 400,
       lineHeight: 1.5
     }
   },
-  
+
 })
 
 function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Navbar />
-        <Divider />
-        <Content />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Navbar />
+      <ItemListContainer />
+    </ThemeProvider>
   );
 }
 

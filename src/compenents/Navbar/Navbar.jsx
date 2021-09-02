@@ -4,114 +4,248 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
-import logo from '../../assets/images/logo-black.png'
-import { Brightness4, Brightness5 } from '@material-ui/icons'
-import IconButton from '@material-ui/core/IconButton';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid'
+import IconButton from '@material-ui/core/IconButton'
+import Hidden from '@material-ui/core/Hidden'
+import Container from '@material-ui/core/Container'
+import MenuIcon from '@material-ui/icons/Menu'
+import Avatar from '@material-ui/core/Avatar';
+import Popover from '@material-ui/core/Popover';
+import DonBoedoLogo from '../../assets/images/logo-black.png'
+import SwitchCustom from '../SwitchCustom.jsx';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import BadgeCustom from '../BadgeCustom.jsx';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     title: {
-        flexGrow: 1
+        marginLeft: theme.spacing(2)
     },
+    small: {
+        width: theme.spacing(4),
+        height: theme.spacing(4),
+        backgroundColor: theme.palette.text.primary,
+        color: '#FFF'
+    },
+    textColor: {
+        color: theme.palette.text.primary
+    },
+    paper: {
+        border: '1px solid',
+        padding: theme.spacing(1),
+        backgroundColor: theme.palette.background.paper,
+    },
+    list: {
+        padding: theme.spacing(2),
+    },
+    itemLink: {
+        color: theme.palette.text.primary
+    }
 }));
 
-export default function Navbar() {
+function ListItemLink(props) {
     const classes = useStyles();
+    return <ListItem component="a" className={classes.itemLink} {...props} />;
+}
 
-    const [state, setState] = React.useState({
-        checkedA: true,
-        checkedB: true,
-    });
 
+export default function ButtonAppBar() {
+    const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(anchorEl ? null : event.currentTarget);
     };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
 
-    const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+    const handleClose = () => {
+        setAnchorEl(null);
     };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" elevation={0}>
-                <Container maxWidth="md">
+            <AppBar position="static" elevation={0} color="primary">
+                <Container maxWidth="lg">
                     <Toolbar>
-                        <Box mx={1}>
-                            <Avatar alt="Don Boedo Logo" src={logo} />
-                        </Box>
-                        <Typography variant="h6" className={classes.title}>
-                            Don Boedo
-                        </Typography>
-                        <Box mx={1}>
-                            <Button
-                                color="inherit"
-                                endIcon={<ArrowDropDownIcon />}
-                                aria-controls="simple-menu"
-                                aria-haspopup="true"
-                                onClick={handleClick}
-                            >Carta digital</Button>
-                            <Menu
-                                id="simple-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleClose}>Pizzas</MenuItem>
-                                <MenuItem onClick={handleClose}>Empanadas</MenuItem>
-                                <MenuItem onClick={handleClose}>Porciones</MenuItem>
-                                <MenuItem onClick={handleClose}>Calzones</MenuItem>
-                                <MenuItem onClick={handleClose}>Tartas</MenuItem>
-                                <MenuItem onClick={handleClose}>Porciones</MenuItem>
-                                <MenuItem onClick={handleClose}>Sandwich</MenuItem>
-                                <MenuItem onClick={handleClose}>Cocina</MenuItem>
-                                <MenuItem onClick={handleClose}>Ensaladas</MenuItem>
-                                <MenuItem onClick={handleClose}>Pastas</MenuItem>
-                                <MenuItem onClick={handleClose}>Postres</MenuItem>
-                                <MenuItem onClick={handleClose}>Agua y gaseosas</MenuItem>
-                                <MenuItem onClick={handleClose}>Cervezas</MenuItem>
-                                <MenuItem onClick={handleClose}>Vinos</MenuItem>
-                                <MenuItem onClick={handleClose}>Cafetería</MenuItem>
-                            </Menu>
-                        </Box>
-                        <Box mx={1}>
-                            <Button variant="contained" color="secondary">Pedidos</Button>
-                        </Box>
-                        <Box mx={1}>
-                            <IconButton aria-label="delete">
-                                <Brightness4 />
-                            </IconButton>
-                            <IconButton aria-label="delete">
-                                <Brightness5 />
-                            </IconButton>
-                            {/* <Switch
-                                checked={state.checkedA}
-                                onChange={handleChange}
-                                icon={<Brightness4 fontSize="small" />}
-                                checkedIcon={<Brightness5 fontSize="small" />}
-                                name="checkedA"
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            /> */}
-                        </Box>
+                        <Grid
+                            container
+                            justifyContent="center"
+                            alignItems="center"
+                            wrap="nowrap"
+                        >
+                            <Grid item xs>
+                                <Grid
+                                    container
+                                    alignItems="center"
+                                >
+                                    <Grid item>
+                                        <Avatar alt="Don Boedo Logo" src={DonBoedoLogo} />
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h6" className={classes.title}>
+                                            Don Boedo
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
 
+                            </Grid>
+
+                            <Hidden smUp>
+                                <Grid item>
+                                    <IconButton color="inherit" aria-label="menu">
+                                        <MenuIcon />
+                                    </IconButton>
+                                </Grid>
+                            </Hidden>
+
+                            <Hidden xsDown>
+                                <Grid item>
+                                    <Grid container
+                                        alignItems="center"
+                                        wrap="nowrap"
+                                        spacing={2}>
+                                        <Grid item>
+                                            <SwitchCustom />
+                                        </Grid>
+                                        <Grid item>
+                                            <Button
+                                                endIcon={<ArrowDropDownIcon />}
+                                                aria-controls="simple-menu"
+                                                aria-haspopup="true"
+                                                onClick={handleClick}
+                                            >
+                                                Carta digital
+                                            </Button>
+
+
+                                            <Popover
+                                                id={id}
+                                                open={open}
+                                                anchorEl={anchorEl}
+                                                onClose={handleClose}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                }}
+                                                elevation={3}
+                                            >
+                                                <Grid container>
+                                                    <Grid item>
+                                                        <List className={classes.list} dense>
+                                                            <ListItem>
+                                                                <ListItemText primary={<Typography variant="h6" color="secondary">COMIDAS</Typography>} />
+                                                            </ListItem>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Pizzas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Empanadas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Porciones" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Calzones" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Tartas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Sandwich" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Cocina" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Ensaladas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Pastas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Postres" />
+                                                            </ListItemLink>
+                                                        </List>
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <List className={classes.list} dense>
+                                                            <ListItem>
+                                                                <ListItemText primary={<Typography variant="h6" color="secondary">BEBIDAS</Typography>} />
+                                                            </ListItem>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Agua y gaseosas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Cervezas" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Vinos" />
+                                                            </ListItemLink>
+                                                            <ListItemLink href="#">
+                                                                <ListItemText primary="Cafetería" />
+                                                            </ListItemLink>
+                                                        </List>
+                                                    </Grid>
+                                                </Grid>
+
+                                            </Popover>
+
+                                            {/* <Menu
+                                                    id="simple-menu"
+                                                    anchorEl={anchorEl}
+                                                    keepMounted
+                                                    open={Boolean(anchorEl)}
+                                                    onClose={handleClose}
+                                                >
+                                                    <MenuItem onClick={handleClose}>Pizzas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Empanadas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Calzones</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Tartas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Porciones</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Sandwich</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Cocina</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Ensaladas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Pastas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Postres</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Agua y gaseosas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Cervezas</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Vinos</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Cafetería</MenuItem>
+                                                </Menu> */}
+                                        </Grid>
+                                        {/* <Grid item>
+                                                <Button variant="contained" color="secondary" >Pedidos</Button>
+                                            </Grid> */}
+
+                                        <Grid item>
+                                            <IconButton aria-label="cart">
+                                                <BadgeCustom badgeContent={4}>
+                                                    <ShoppingCartIcon className={classes.textColor} />
+                                                </BadgeCustom>
+                                            </IconButton>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Hidden>
+                        </Grid>
                     </Toolbar>
                 </Container>
+
             </AppBar>
-        </div >
+            <Divider />
+        </div>
     );
 }
