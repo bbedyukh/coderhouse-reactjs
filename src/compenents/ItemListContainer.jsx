@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export const ItemListContainer = () => {
+export const ItemListContainer = (props) => {
+    const { message } = props
     const classes = useStyles();
 
     return (
@@ -19,7 +20,7 @@ export const ItemListContainer = () => {
                 container
             >
                 <Grid item>
-                    <Typography variant="h1">CATÁLOGO</Typography>
+                    <Typography variant="h1">{message}</Typography>
                 </Grid>
             </Grid>
         </div>

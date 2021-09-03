@@ -15,11 +15,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Popover from '@material-ui/core/Popover';
 import DonBoedoLogo from '../../assets/images/logo-black.png'
 import SwitchCustom from '../SwitchCustom.jsx';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import BadgeCustom from '../BadgeCustom.jsx';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import CartWidget from '../CartWidget';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(4),
         backgroundColor: theme.palette.text.primary,
         color: '#FFF'
-    },
-    textColor: {
-        color: theme.palette.text.primary
     },
     paper: {
         border: '1px solid',
@@ -112,16 +108,17 @@ export default function ButtonAppBar() {
                                     <Grid container
                                         alignItems="center"
                                         wrap="nowrap"
-                                        spacing={2}>
+                                        spacing={2}
+                                    >
                                         <Grid item>
                                             <SwitchCustom />
                                         </Grid>
                                         <Grid item>
                                             <Button
-                                                endIcon={<ArrowDropDownIcon />}
                                                 aria-controls="simple-menu"
                                                 aria-haspopup="true"
                                                 onClick={handleClick}
+                                                endIcon={<ArrowDropDownIcon />}
                                             >
                                                 Carta digital
                                             </Button>
@@ -231,11 +228,7 @@ export default function ButtonAppBar() {
                                             </Grid> */}
 
                                         <Grid item>
-                                            <IconButton aria-label="cart">
-                                                <BadgeCustom badgeContent={4}>
-                                                    <ShoppingCartIcon className={classes.textColor} />
-                                                </BadgeCustom>
-                                            </IconButton>
+                                            <CartWidget />
                                         </Grid>
                                     </Grid>
                                 </Grid>
