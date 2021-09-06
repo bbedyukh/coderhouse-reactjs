@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,7 +9,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { Button } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -36,48 +35,39 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CartDrawer() {
-    const classes = useStyles();
-
-    const [state, setState] = useState(false);
-
-    const toggleDrawer = (open) => {
-        setState(open);
-    };
+export default function CartDrawer({handleOpen, cartDrawer}) {
+    const classes = useStyles()
 
     return (
-        <div className={classes.root}>
-            <Button onClick={toggleDrawer(true)}>Open right drawer</Button>
-            <Drawer
-                className={classes.drawer}
-                anchor="right"
-                onClose={toggleDrawer(false)}
-                open={true}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <Toolbar />
-                <div className={classes.drawerContainer}>
-                    <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
-            </Drawer>
-        </div>
+        <Drawer
+            className={classes.drawer}
+            anchor="right"
+            onClose={() => handleOpen()}
+            open={cartDrawer}
+            classes={{
+                paper: classes.drawerPaper,
+            }}
+        >
+            <Toolbar />
+            <div className={classes.drawerContainer}>
+                <List>
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </div>
+        </Drawer>
     );
 }

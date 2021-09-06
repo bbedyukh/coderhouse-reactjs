@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles'
-import CartDrawer from './compenents/CartDrawer.jsx'
 import { ItemListContainer } from './compenents/ItemListContainer.jsx'
 import Navbar from './compenents/Navbar/Navbar.jsx'
 
@@ -49,10 +48,11 @@ const theme = createTheme({
 })
 
 function App() {
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <ItemListContainer message="CATÁLOGO" />
+      <ItemListContainer />
     </ThemeProvider>
   );
 }

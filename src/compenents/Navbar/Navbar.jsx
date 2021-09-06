@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,6 +19,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import CartWidget from '../CartWidget';
+import CartDrawer from '../CartDrawer.jsx'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,7 +56,13 @@ function ListItemLink(props) {
 
 export default function ButtonAppBar() {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [count, setCount] = useState(0);
+    const [cartDrawer, setCartDrawer] = useState(false)
+
+    const handleOpen = () => {
+        setCartDrawer(!cartDrawer)
+    }
 
     const handleClick = (event) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -228,7 +236,10 @@ export default function ButtonAppBar() {
                                             </Grid> */}
 
                                         <Grid item>
-                                            <CartWidget />
+                                            <CartWidget item={count} handleClick={() => setCartDrawer(!cartDrawer)} />
+                                        </Grid>
+                                        <Grid item>
+                                            <Button onClick={() => setCount(count + 1)}>Agregar</Button>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -236,7 +247,7 @@ export default function ButtonAppBar() {
                         </Grid>
                     </Toolbar>
                 </Container>
-
+                <CartDrawer handleOpen={handleOpen} cartDrawer={cartDrawer} />
             </AppBar>
             <Divider />
         </div>

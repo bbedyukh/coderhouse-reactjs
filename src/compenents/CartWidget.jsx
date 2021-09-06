@@ -10,13 +10,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const CartWidget = () => {
+const CartWidget = (props) => {
     const classes = useStyles();
+
+    const { item, handleClick } = props
 
     return (
         <div>
-            <IconButton aria-label="cart">
-                <BadgeCustom badgeContent={4}>
+            <IconButton onClick={handleClick} aria-label="cart">
+                <BadgeCustom badgeContent={item}>
                     <ShoppingCartIcon className={classes.textColor} />
                 </BadgeCustom>
             </IconButton>
