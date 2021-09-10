@@ -3,6 +3,7 @@ import { ThemeProvider } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles'
 import {Navbar} from './compenents/Navbar/Navbar'
 import { ItemListContainer } from './compenents/ItemList/ItemListContainer'
+import { ItemDetailContainer } from './compenents/ItemList/ItemDetailContainer'
 
 const theme = createTheme({
   palette: {
@@ -52,7 +53,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <ItemListContainer />
+      {/* <ItemListContainer /> */}
+      <ItemDetailContainer />
     </ThemeProvider>
   );
 }

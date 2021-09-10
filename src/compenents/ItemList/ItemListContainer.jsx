@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { LinearProgress } from '@material-ui/core'
-import { ItemList } from './ItemList.jsx'
+import { ItemList } from './ItemList'
 
 const pizzasFromAPI = [
     { id: 1, title: "Muzzarella", description: "Test description", price: 650, pictureUrl: "https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228383.jpg" },
@@ -15,7 +15,7 @@ const pizzasFromAPI = [
     { id: 10, title: "Muzzarella c/ huevo", description: "Test description", price: 740, pictureUrl: "https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230561.jpg" }
 ]
 
-const getPizzas = new Promise((resolve, reject) => {
+const getPizzas = () => new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve(pizzasFromAPI)
     }, 2000)
@@ -26,16 +26,10 @@ export const ItemListContainer = () => {
     const [loading, setLoading] = useState(true)
 
     const fetchPizzas = () => {
-        getPizzas
-            .then(result => {
-                setPizzas(result)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        getPizzas()
+            .then(result => setPizzas(result))
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false))
     }
 
     useEffect(() => {
@@ -44,8 +38,10 @@ export const ItemListContainer = () => {
 
     return (
         <div>
-            {loading ? (<LinearProgress color="secondary" />) : ''}
-            <ItemList items={pizzas} stock={5} initial={1} />
+            {
+                loading ? (<LinearProgress color="secondary" />) :
+                    <ItemList items={pizzas} stock={5} initial={1} />
+            }
         </div>
     )
 }

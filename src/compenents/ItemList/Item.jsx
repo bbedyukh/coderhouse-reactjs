@@ -49,6 +49,7 @@ export const Item = ({ product, stock, initial }) => {
 
     const addToCart = () => {
         setInStock(inStock - quantity)
+        setQuantity(initial)
         setNotification({
             open: true,
             text: `Se han agregado ${quantity} pizzas de ${product.title} al carrito.`
@@ -99,7 +100,7 @@ export const Item = ({ product, stock, initial }) => {
                     >
                         <Grid item xs={6}>
                             <Paper className={classes.paper} elevation={0} variant="outlined">
-                                <IconButton onClick={decreaseQuantity} className={classes.iconButton} aria-label="decrease" disabled={inStock <= 0}>
+                                <IconButton onClick={decreaseQuantity} className={classes.iconButton} aria-label="decrease" disabled={inStock <= 0 || quantity === 1}>
                                     <RemoveIcon />
                                 </IconButton>
                                 <InputBase
@@ -109,7 +110,7 @@ export const Item = ({ product, stock, initial }) => {
                                     value={inStock <= 0 ? 'No stock' : quantity}
                                     readOnly
                                 />
-                                <IconButton onClick={increaseQuantity} className={classes.iconButton} aria-label="increase" disabled={inStock <= 0}>
+                                <IconButton onClick={increaseQuantity} className={classes.iconButton} aria-label="increase" disabled={inStock <= 0 || quantity === inStock}>
                                     <AddIcon />
                                 </IconButton>
                             </Paper>
