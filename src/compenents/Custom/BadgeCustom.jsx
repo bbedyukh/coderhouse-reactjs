@@ -1,5 +1,5 @@
 import React from 'react';
-import Badge from '@material-ui/core/Badge';
+import { Badge } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const StyledBadge = withStyles((theme) => ({
@@ -11,11 +11,11 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-export default function BadgeCustom(props) {
+export const BadgeCustom = (props) => {
   const { badgeContent } = props
   return (
     <StyledBadge badgeContent={badgeContent} color="secondary">
-        { props.children }
+      {props.children}
     </StyledBadge>
   );
 }

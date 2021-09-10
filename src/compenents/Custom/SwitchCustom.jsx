@@ -1,10 +1,8 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { Switch, Avatar } from '@material-ui/core';
 import LightIcon from '@material-ui/icons/Brightness2';
 import DarkIcon from '@material-ui/icons/Brightness5';
-import Avatar from '@material-ui/core/Avatar';
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -73,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SwitchCustom() {
+export const SwitchCustom = () => {
 
     const classes = useStyles();
 

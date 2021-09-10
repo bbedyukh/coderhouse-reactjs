@@ -1,26 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { AppBar, Toolbar, Typography, Button, Divider, Grid, Hidden, IconButton, Container, Avatar, Popover, List, ListItem, ListItemText } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import Hidden from '@material-ui/core/Hidden'
-import Container from '@material-ui/core/Container'
-import MenuIcon from '@material-ui/icons/Menu'
-import Avatar from '@material-ui/core/Avatar';
-import Popover from '@material-ui/core/Popover';
 import DonBoedoLogo from '../../assets/images/logo-black.png'
-import SwitchCustom from '../SwitchCustom.jsx';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import CartWidget from '../CartWidget';
-import CartDrawer from '../CartDrawer.jsx'
-
+import { SwitchCustom } from '../Custom/SwitchCustom';
+import { CartWidget } from '../Cart/CartWidget';
+import { CartDrawer } from '../Cart/CartDrawer'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,13 +34,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function ListItemLink(props) {
+const ListItemLink = (props) => {
     const classes = useStyles();
     return <ListItem component="a" className={classes.itemLink} {...props} />;
 }
 
-
-export default function ButtonAppBar() {
+export const Navbar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [count, setCount] = useState(0);

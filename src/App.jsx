@@ -1,7 +1,8 @@
+import React from 'react'
 import { ThemeProvider } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles'
-import { ItemListContainer } from './compenents/ItemListContainer.jsx'
-import Navbar from './compenents/Navbar/Navbar.jsx'
+import {Navbar} from './compenents/Navbar/Navbar'
+import { ItemListContainer } from './compenents/ItemList/ItemListContainer'
 
 const theme = createTheme({
   palette: {
@@ -48,7 +49,6 @@ const theme = createTheme({
 })
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <Navbar />

@@ -1,6 +1,7 @@
-import { Grid, Box, Container, Typography } from '@material-ui/core'
-import {ItemCount} from './ItemCount.jsx'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Box, Container, Typography } from '@material-ui/core'
+import { Item } from './Item'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,9 +12,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ItemListContainer = () => {
+export const ItemList = ({ items, stock, initial }) => {
     const classes = useStyles()
-    const onAdd = (quantity) => console.log(`Cantidad de unidades a agregar: ${quantity}`)
 
     return (
         <Container className={classes.root}>
@@ -26,9 +26,12 @@ export const ItemListContainer = () => {
                     container
                     spacing={3}
                 >
-                    <Grid item>
-                        <ItemCount stock={5} initial={1} onAdd={onAdd} />
-                    </Grid>
+                    {items.map(product => (
+
+                        <Grid key={product.id} item>
+                            <Item product={product} stock={stock} initial={initial} />
+                        </Grid>
+                    ))}
                 </Grid>
             </Box>
         </Container>
