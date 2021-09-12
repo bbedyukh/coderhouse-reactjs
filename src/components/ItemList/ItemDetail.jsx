@@ -79,7 +79,7 @@ export const ItemDetail = ({ product, stock, initial }) => {
             <Paper>
                 <Box p={5}>
                     <Grid container justifyContent="center" spacing={5}>
-                        <Grid item xs={7}>
+                        <Grid item xs={12} sm={7}>
                             <CardMedia
                                 component="img"
                                 className={classes.media}
@@ -87,7 +87,7 @@ export const ItemDetail = ({ product, stock, initial }) => {
                                 title={product.title}
                             />
                         </Grid>
-                        <Grid container item direction="column" spacing={2} xs={5}>
+                        <Grid container item direction="column" spacing={2} xs={12} sm={5}>
                             <Grid item>
                                 <Typography variant="h5" className={classes.typography}>
                                     {product.title}

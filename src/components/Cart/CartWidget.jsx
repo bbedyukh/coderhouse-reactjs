@@ -14,12 +14,10 @@ export const CartWidget = ({ item, handleClick }) => {
     const classes = useStyles()
 
     return (
-        <div>
-            <IconButton onClick={handleClick} aria-label="cart">
-                <BadgeCustom badgeContent={item}>
-                    <ShoppingCartIcon className={classes.textColor} />
-                </BadgeCustom>
-            </IconButton>
-        </div>
+        <IconButton onClick={handleClick} aria-label="cart">
+            <BadgeCustom badgeContent={item}>
+                <ShoppingCartIcon className={classes.textColor} />
+            </BadgeCustom>
+        </IconButton>
     )
 }

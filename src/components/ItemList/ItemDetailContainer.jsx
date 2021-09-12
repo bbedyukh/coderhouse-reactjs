@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { LinearProgress, Container } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import { ItemDetail } from './ItemDetail'
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: theme.spacing(3),
-    },
-}))
 
 const empanadasFromAPI = [
     { id: 1, title: "Empanada vegetariana", description: "Relleno: Carne de soja, morrón colorado, morrón verde, ajo, cebolla, cebolla de verdeo, huevo y aceitunas.", price: 95, pictureUrl: "https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555236178.jpg" },
@@ -30,7 +23,6 @@ const getEmpanadas = () => new Promise((resolve, reject) => {
 })
 
 export const ItemDetailContainer = () => {
-    const classes = useStyles()
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -46,13 +38,11 @@ export const ItemDetailContainer = () => {
     }, [])
 
     return (
-        <div>
+        <>
             {
-                loading ? (<LinearProgress color="secondary" />) :
-                    <Container className={classes.root}>
-                        <ItemDetail product={product} stock={5} initial={1} />
-                    </Container>
+                loading ? <LinearProgress color="secondary" /> :
+                    <ItemDetail product={product} stock={5} initial={1} />
             }
-        </div>
+        </>
     )
 }

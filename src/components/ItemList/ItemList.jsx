@@ -1,12 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box, Container, Typography } from '@material-ui/core'
+import { Grid, Box, Typography } from '@material-ui/core'
 import { Item } from './Item'
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: theme.spacing(3),
-    },
     typography: {
         fontWeight: 600,
     }
@@ -16,7 +13,7 @@ export const ItemList = ({ items, stock, initial }) => {
     const classes = useStyles()
 
     return (
-        <Container className={classes.root}>
+        <div>
             <Typography align="center" variant="h1" className={classes.typography}>
                 Pizzas
             </Typography>
@@ -34,6 +31,6 @@ export const ItemList = ({ items, stock, initial }) => {
                     ))}
                 </Grid>
             </Box>
-        </Container>
+        </div>
     )
 }
