@@ -1,62 +1,42 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Box, Container } from '@material-ui/core'
+import { Layout } from './components/Layout/Layout'
+import { Theme } from './components/Theme/Theme'
+import { ItemListContainer } from './components/ItemList/ItemListContainer'
+import { ItemDetailContainer } from './components/ItemList/ItemDetailContainer'
+import { Home } from './components/Home'
 import React from 'react'
-import { ThemeProvider } from '@material-ui/core'
-import { createTheme } from '@material-ui/core/styles'
-import {Navbar} from './compenents/Navbar/Navbar'
-import { ItemListContainer } from './compenents/ItemList/ItemListContainer'
-import { ItemDetailContainer } from './compenents/ItemList/ItemDetailContainer'
-
-const theme = createTheme({
-  palette: {
-    type: "light",
-    primary: {
-      main: '#FFF',
-      light: '#F0E5CF',
-      dark: '#C8C6C6',
-      contrastText: '#2D3748'
-    },
-    secondary: {
-      main: '#3F51B5',
-    },
-    action: {
-      main: '#F0E5CF'
-    },
-    text: {
-      primary: '#2D3748'
-    }
-  },
-  typography: {
-    fontFamily: 'Roboto',
-    fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    h1: {
-      fontWeight: 800,
-      fontSize: '3.75rem'
-    },
-    h6: {
-      fontWeight: 700,
-      fontSize: '1rem'
-    },
-    body1: {
-      fontSize: '0.9rem',
-      fontFamily: 'Roboto',
-      fontWeight: 400,
-      lineHeight: 1.5
-    }
-  },
-
-})
+import { NoMatchRoute } from './components/NoMatchRoute'
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Navbar />
-      {/* <ItemListContainer /> */}
-      <ItemDetailContainer />
-    </ThemeProvider>
-  );
+    return (
+        <Router>
+            <Theme>
+                <Layout>
+                    <Container>
+                        <Box sx={{ py: 4 }}>
+                            <Switch>
+                                <Route exact path='/' component={Home} />
+                                <Route
+                                    exact
+                                    path='/category/:category'
+                                    component={ItemListContainer}
+                                />
+                                <Route
+                                    exact
+                                    path='/item/:itemId'
+                                    component={ItemDetailContainer}
+                                />
+                                <Route path='*'>
+                                    <NoMatchRoute />
+                                </Route>
+                            </Switch>
+                        </Box>
+                    </Container>
+                </Layout>
+            </Theme>
+        </Router>
+    )
 }
 
-export default App;
+export default App
