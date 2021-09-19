@@ -1,33 +1,42 @@
-import React from 'react'
-import { Box, Typography, Link} from '@material-ui/core'
+import { Box, Typography, Link, Divider } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+    footer: {
+        marginTop: 'auto',
+    },
+}))
 
 const Copyright = () => {
     return (
-      <Typography variant="body2" color="textPrimary" align="center">
-        <Link color="inherit" href="https://material-ui.com/">
-          Don Boedo 
-        </Link>
-        {' '} &reg; {' '}
-        {new Date().getFullYear()}
-      </Typography>
-    );
-  }
+        <Typography variant='body2' color='textPrimary' align='center'>
+            <Link color='inherit' href='https://material-ui.com/'>
+                Don Boedo
+            </Link>{' '}
+            &reg; {new Date().getFullYear()}
+        </Typography>
+    )
+}
 
 export const Footer = () => {
+    const classes = useStyles()
     return (
-        <Box sx={{ bgcolor: 'primary.main', p: 6 }} component="footer">
-            <Typography variant="h6" align="center" gutterBottom>
-                Footer
-            </Typography>
-            <Typography
-                variant="subtitle1"
-                align="center"
-                color="textPrimary"
-                component="p"
-            >
-                Acá debería ir el footer.
-            </Typography>
-            <Copyright />
+        <Box className={classes.footer}>
+            <Divider />
+            <Box sx={{ bgcolor: 'primary.main', p: 6 }} component='footer'>
+                <Typography variant='h6' align='center' gutterBottom>
+                    Footer
+                </Typography>
+                <Typography
+                    variant='subtitle1'
+                    align='center'
+                    color='textPrimary'
+                    component='p'
+                >
+                    Acá debería ir el footer.
+                </Typography>
+                <Copyright />
+            </Box>
         </Box>
     )
 }

@@ -1,24 +1,45 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Popover, List, ListItem, ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
+import {
+    Typography,
+    Grid,
+    Popover,
+    List,
+    ListItem,
+    ListItemText,
+} from '@material-ui/core'
 
+const links = {
+    foods: [
+        'Pizzas',
+        'Empanadas',
+        'Porciones',
+        'Calzones',
+        'Tartas',
+        'Sandwichs',
+        'Cocina',
+        'Ensaladas',
+        'Pastas',
+        'Postres',
+    ],
+    drinks: ['Gaseosas', 'Cervezas', 'Vinos'],
+}
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
     list: {
         padding: theme.spacing(2),
     },
-    itemLink: {
-        color: theme.palette.text.primary
-    }
-}));
-
-const ListItemLink = (props) => {
-    const classes = useStyles();
-    return <ListItem component="a" className={classes.itemLink} {...props} />;
-}
+    link: {
+        color: theme.palette.text.primary,
+        textDecoration: 'none',
+        '&:hover': {
+            color: theme.palette.secondary.main,
+        },
+    },
+}))
 
 export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
-    const classes = useStyles();
+    const classes = useStyles()
     return (
         <Popover
             open={isMenuOpen}
@@ -38,57 +59,49 @@ export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
                 <Grid item>
                     <List className={classes.list} dense>
                         <ListItem>
-                            <ListItemText primary={<Typography variant="h6" color="secondary">COMIDAS</Typography>} />
+                            <ListItemText
+                                primary={
+                                    <Typography variant='h6' color='secondary'>
+                                        COMIDAS
+                                    </Typography>
+                                }
+                            />
                         </ListItem>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Pizzas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Empanadas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Porciones" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Calzones" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Tartas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Sandwich" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Cocina" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Ensaladas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Pastas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Postres" />
-                        </ListItemLink>
+                        {links.foods.map(food => (
+                            <Link
+                                to={`/category/${food.toLowerCase()}`}
+                                className={classes.link}
+                                key={food}
+                            >
+                                <ListItem>
+                                    <ListItemText primary={`${food}`} />
+                                </ListItem>
+                            </Link>
+                        ))}
                     </List>
                 </Grid>
                 <Grid item>
                     <List className={classes.list} dense>
                         <ListItem>
-                            <ListItemText primary={<Typography variant="h6" color="secondary">BEBIDAS</Typography>} />
+                            <ListItemText
+                                primary={
+                                    <Typography variant='h6' color='secondary'>
+                                        BEBIDAS
+                                    </Typography>
+                                }
+                            />
                         </ListItem>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Agua y gaseosas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Cervezas" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Vinos" />
-                        </ListItemLink>
-                        <ListItemLink href="#">
-                            <ListItemText primary="Cafetería" />
-                        </ListItemLink>
+                        {links.drinks.map(drink => (
+                            <Link
+                                to={`/category/${drink.toLowerCase()}`}
+                                className={classes.link}
+                                key={drink}
+                            >
+                                <ListItem>
+                                    <ListItemText primary={`${drink}`} />
+                                </ListItem>
+                            </Link>
+                        ))}
                     </List>
                 </Grid>
             </Grid>

@@ -1,16 +1,17 @@
-import React from 'react'
-import { Divider } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
 export const Layout = ({ children }) => {
     return (
-        <>
+        <Box
+            display='flex'
+            flexDirection='column'
+            style={{ minHeight: '100vh' }}
+        >
             <Header />
-            <Divider />
             {children}
-            <Divider />
             <Footer />
-        </>
+        </Box>
     )
 }
