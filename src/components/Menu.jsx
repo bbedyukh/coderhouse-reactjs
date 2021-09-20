@@ -54,6 +54,7 @@ export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
                 horizontal: 'center',
             }}
             elevation={3}
+            onClick={onHandleClose}
         >
             <Grid container>
                 <Grid item>

@@ -1263,7 +1263,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681554.jpg',
     },
     {
-        id: 137,
+        id: 139,
         category: 'vinos',
         title: 'Chamullo Malbec',
         description: '',
@@ -1272,7 +1272,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491413268.jpg',
     },
     {
-        id: 137,
+        id: 140,
         category: 'vinos',
         title: 'Norton Mil Rosas Rosado',
         description: '',
@@ -1281,7 +1281,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491408846.jpg',
     },
     {
-        id: 137,
+        id: 141,
         category: 'vinos',
         title: 'Los Arboles Dulce',
         description: '',
@@ -1290,7 +1290,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478670053.jpg',
     },
     {
-        id: 137,
+        id: 142,
         category: 'vinos',
         title: 'Norton Cosecha Tardía Blanco Dulce',
         description: '',
@@ -1299,7 +1299,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681066.jpg',
     },
     {
-        id: 137,
+        id: 143,
         category: 'vinos',
         title: 'Latitud 33 Malbec',
         description: '',
@@ -1308,7 +1308,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478636683.jpg',
     },
     {
-        id: 137,
+        id: 144,
         category: 'vinos',
         title: 'Latitud 33 Cabernet Sauvignon',
         description: '',
@@ -1317,7 +1317,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478644277.jpg',
     },
     {
-        id: 137,
+        id: 145,
         category: 'vinos',
         title: 'Trumpeter Malbec 375cc',
         description: '',
@@ -1326,7 +1326,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478630732.jpg',
     },
     {
-        id: 137,
+        id: 146,
         category: 'vinos',
         title: 'Altos del Plata Malbec',
         description: '',
@@ -1335,7 +1335,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478648514.jpg',
     },
     {
-        id: 137,
+        id: 147,
         category: 'vinos',
         title: 'Trumpeter Malbec',
         description: '',
@@ -1344,7 +1344,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478644013.jpg',
     },
     {
-        id: 137,
+        id: 148,
         category: 'vinos',
         title: 'Alamos Malbec',
         description: '',
@@ -1353,7 +1353,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681371.jpg',
     },
     {
-        id: 137,
+        id: 149,
         category: 'vinos',
         title: 'Fond de Cave Malbec',
         description: '',
@@ -1362,7 +1362,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478645380.jpg',
     },
     {
-        id: 137,
+        id: 150,
         category: 'vinos',
         title: 'Altos del Plata Chardonnay',
         description: '',
@@ -1371,7 +1371,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491406608.jpg',
     },
     {
-        id: 137,
+        id: 151,
         category: 'vinos',
         title: 'Valmont Blanco',
         description: '',
@@ -1380,7 +1380,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478646796.jpg',
     },
     {
-        id: 137,
+        id: 152,
         category: 'vinos',
         title: 'Rutini Malbec',
         description: '',
@@ -1389,7 +1389,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478646464.jpg',
     },
     {
-        id: 137,
+        id: 153,
         category: 'vinos',
         title: 'Luigi Bosca Malbec',
         description: '',
@@ -1398,7 +1398,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478645796.jpg',
     },
     {
-        id: 137,
+        id: 154,
         category: 'vinos',
         title: 'Trumpeter Sauvignon Blanco',
         description: '',
@@ -1407,7 +1407,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478659160.jpg',
     },
     {
-        id: 137,
+        id: 155,
         category: 'vinos',
         title: 'Saint Felicien Malbec',
         description: '',
@@ -1416,7 +1416,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478648269.jpg',
     },
     {
-        id: 137,
+        id: 156,
         category: 'vinos',
         title: 'Navarro Correas Colección Privada Malbec',
         description: '',
@@ -1425,7 +1425,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478659688.jpg',
     },
     {
-        id: 137,
+        id: 157,
         category: 'vinos',
         title: 'Escorihuela Gascon Malbec',
         description: '',
@@ -1434,7 +1434,7 @@ const itemsFromAPI = [
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478670113.jpg',
     },
     {
-        id: 137,
+        id: 158,
         category: 'vinos',
         title: 'Nicasia Malbec',
         description: '',
@@ -1458,12 +1458,21 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        getItems()
-            .then(result => {
-                setItems(result.filter(i => i.category === category))
-            })
-            .catch(err => console.error(err))
-            .finally(() => setLoading(false))
+        if (category) {
+            getItems()
+                .then(result => {
+                    setItems(result.filter(i => i.category === category))
+                })
+                .catch(err => console.error(err))
+                .finally(() => setLoading(false))
+        } else {
+            getItems()
+                .then(result => {
+                    setItems(result)
+                })
+                .catch(err => console.error(err))
+                .finally(() => setLoading(false))
+        }
     }, [category])
 
     return (

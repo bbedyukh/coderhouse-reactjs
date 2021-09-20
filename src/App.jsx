@@ -16,7 +16,11 @@ function App() {
                     <Container>
                         <Box sx={{ py: 4 }}>
                             <Switch>
-                                <Route exact path='/' component={Home} />
+                                <Route
+                                    exact
+                                    path='/'
+                                    component={ItemListContainer}
+                                />
                                 <Route
                                     exact
                                     path='/category/:category'

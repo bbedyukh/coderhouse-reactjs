@@ -31,7 +31,7 @@ export const ItemList = ({ items, stock, initial, isLoading }) => {
                     variant='h1'
                     className={classes.typography}
                 >
-                    {capitalize(category)}
+                    {capitalize(category ? category : 'productos')}
                 </Typography>
             )}
             <Box my={5}>
