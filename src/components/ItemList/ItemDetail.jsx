@@ -14,6 +14,7 @@ import {
 import MuiAlert from '@material-ui/lab/Alert'
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     paper: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     iconButton: {
         padding: theme.spacing(1),
@@ -36,11 +38,15 @@ const useStyles = makeStyles(theme => ({
     typography: {
         fontWeight: 600,
     },
+    link: {
+        textDecoration: 'none',
+    },
 }))
 
 export const ItemDetail = ({ item, stock, initial }) => {
     const classes = useStyles()
     const [quantity, setQuantity] = useState(initial)
+    const [isAddedToCart, setAddedToCart] = useState(false)
     const [inStock, setInStock] = useState(stock)
     const [notification, setNotification] = useState({ open: false, text: '' })
 
@@ -53,8 +59,9 @@ export const ItemDetail = ({ item, stock, initial }) => {
     }
 
     const addToCart = () => {
+        setAddedToCart(true)
         setInStock(inStock - quantity)
-        setQuantity(initial)
+        setQuantity(quantity)
         setNotification({
             open: true,
             text: `Se ${quantity > 1 ? 'han' : 'ha'} agregado ${quantity} ${
@@ -91,7 +98,7 @@ export const ItemDetail = ({ item, stock, initial }) => {
             <Paper>
                 <Box p={5}>
                     <Grid container justifyContent='center' spacing={5}>
-                        <Grid item xs={12} sm={7}>
+                        <Grid item xs={12} sm={9}>
                             <CardMedia
                                 component='img'
                                 className={classes.media}
@@ -105,7 +112,7 @@ export const ItemDetail = ({ item, stock, initial }) => {
                             direction='column'
                             spacing={2}
                             xs={12}
-                            sm={5}
+                            sm={3}
                         >
                             <Grid item>
                                 <Typography
@@ -145,7 +152,7 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                 alignItems='center'
                                 spacing={2}
                             >
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12}>
                                     <Paper
                                         className={classes.paper}
                                         elevation={0}
@@ -185,7 +192,7 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                         </IconButton>
                                     </Paper>
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12}>
                                     <Button
                                         variant='contained'
                                         color='secondary'
@@ -197,6 +204,23 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                         Add to cart
                                     </Button>
                                 </Grid>
+                                {isAddedToCart && (
+                                    <Grid item xs={12}>
+                                        <Link
+                                            to={'/cart'}
+                                            className={classes.link}
+                                        >
+                                            <Button
+                                                variant='outlined'
+                                                color='secondary'
+                                                disableElevation
+                                                fullWidth
+                                            >
+                                                Finish purchase
+                                            </Button>
+                                        </Link>
+                                    </Grid>
+                                )}
                             </Grid>
                         </Grid>
                     </Grid>

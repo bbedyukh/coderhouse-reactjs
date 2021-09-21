@@ -1449,7 +1449,7 @@ const getItems = () =>
     new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(itemsFromAPI)
-        }, 2000)
+        }, 1000)
     })
 
 export const ItemDetailContainer = () => {

@@ -41,7 +41,7 @@ export const Header = () => {
         setAnchorEl(anchorEl ? null : event.currentTarget)
     }
 
-    const onHandleClose = e => {
+    const onHandleClose = () => {
         setAnchorEl(null)
     }
 

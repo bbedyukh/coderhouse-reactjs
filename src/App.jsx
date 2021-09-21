@@ -5,6 +5,7 @@ import { Theme } from './components/Theme/Theme'
 import { ItemListContainer } from './components/ItemList/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemList/ItemDetailContainer'
 import { Home } from './components/Home'
+import { Cart } from './components/Cart/Cart'
 import React from 'react'
 import { NoMatchRoute } from './components/NoMatchRoute'
 
@@ -31,6 +32,7 @@ function App() {
                                     path='/item/:itemId'
                                     component={ItemDetailContainer}
                                 />
+                                <Route exact path='/cart' component={Cart} />
                                 <Route path='*'>
                                     <NoMatchRoute />
                                 </Route>
