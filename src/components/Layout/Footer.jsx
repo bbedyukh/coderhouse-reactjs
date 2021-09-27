@@ -1,5 +1,5 @@
-import { Box, Typography, Link, Divider } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, Typography, Link, Divider } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(theme => ({
     footer: {
@@ -31,8 +31,7 @@ export const Footer = () => {
                     variant='subtitle1'
                     align='center'
                     color='textPrimary'
-                    component='p'
-                >
+                    component='p'>
                     Acá debería ir el footer.
                 </Typography>
                 <Copyright />

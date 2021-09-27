@@ -1,17 +1,22 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
     Drawer,
-    Toolbar,
-    List,
     Divider,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-} from '@material-ui/core'
-import InboxIcon from '@material-ui/icons/Inbox'
-import MailIcon from '@material-ui/icons/Mail'
+    Typography,
+    IconButton,
+    Box,
+    Avatar,
+    Grid,
+    Stack,
+    Button,
+} from '@mui/material'
+import { Link } from 'react-router-dom'
+import { grey } from '@mui/material/colors'
+import { useCartContext } from '../../contexts/CartContext'
+import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
+import { BadgeCustom } from '../Customs/BadgeCustom'
 
-const drawerWidth = 240
+const drawerWidth = 375
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,46 +43,126 @@ const useStyles = makeStyles(theme => ({
 
 export const CartDrawer = ({ handleOpen, cartDrawer }) => {
     const classes = useStyles()
-
+    const { cart, deleteItem } = useCartContext()
     return (
         <Drawer
             className={classes.drawer}
             anchor='right'
-            onClose={() => handleOpen()}
+            onClose={handleOpen}
             open={cartDrawer}
             classes={{
                 paper: classes.drawerPaper,
-            }}
-        >
-            <Toolbar />
+            }}>
             <div className={classes.drawerContainer}>
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map(
-                        (text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        )
-                    )}
-                </List>
+                <Box display='flex' justifyContent='center' py={2}>
+                    <Typography variant='h4' color='inherit'>
+                        Tu carrito
+                    </Typography>
+                </Box>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                <Box p={3}>
+                    {cart.length === 0 ? (
+                        <>
+                            <Typography
+                                variant='h5'
+                                sx={{
+                                    textAlign: 'center',
+                                    color: grey[600],
+                                }}>
+                                Tu carrito está vacío
+                            </Typography>
+                            <Typography
+                                variant='body1'
+                                sx={{
+                                    textAlign: 'center',
+                                    color: grey[600],
+                                }}>
+                                ¿No sabés qué comprar? ¡Miles de productos te
+                                esperan!
+                            </Typography>
+                        </>
+                    ) : (
+                        <Stack>
+                            {cart.map(product => (
+                                <Stack key={product.item.id}>
+                                    <Box py={2}>
+                                        <Grid container alignItems='center'>
+                                            <Grid item xs={3}>
+                                                <BadgeCustom
+                                                    badgeContent={
+                                                        product.quantity
+                                                    }
+                                                    anchorOrigin={{
+                                                        vertical: 'bottom',
+                                                        horizontal: 'right',
+                                                    }}>
+                                                    <Avatar
+                                                        alt={product.item.title}
+                                                        src={
+                                                            product.item
+                                                                .pictureUrl
+                                                        }
+                                                        sx={{
+                                                            width: 64,
+                                                            height: 64,
+                                                        }}
+                                                        variant='rounded'
+                                                    />
+                                                </BadgeCustom>
+                                            </Grid>
+                                            <Grid item xs={7}>
+                                                <Typography
+                                                    variant='subtitle2'
+                                                    color='initial'
+                                                    noWrap
+                                                    sx={{
+                                                        overflow: 'hidden',
+                                                        textOverflow:
+                                                            'ellipsis',
+                                                        width: '100%',
+                                                    }}>
+                                                    {product.item.title}
+                                                </Typography>
+                                                <Typography
+                                                    variant='body2'
+                                                    color='initial'
+                                                    noWrap
+                                                    sx={{
+                                                        overflow: 'hidden',
+                                                        textOverflow:
+                                                            'ellipsis',
+                                                        width: '100%',
+                                                    }}>
+                                                    {product.item.description}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={2} textAlign='right'>
+                                                <IconButton
+                                                    onClick={() =>
+                                                        deleteItem(product)
+                                                    }
+                                                    aria-label='deleteItem'>
+                                                    <DoNotDisturbOnIcon />
+                                                </IconButton>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
+                                    <Divider py={2} />
+                                </Stack>
+                            ))}
+                            <Box pt={2} sx={{ textAlign: 'right' }}>
+                                <Link onClick={handleOpen} to={'/cart'}>
+                                    <Button
+                                        variant='contained'
+                                        color='secondary'
+                                        disableElevation>
+                                        Verificar
+                                    </Button>
+                                </Link>
+                            </Box>
+                        </Stack>
+                    )}
+                </Box>
             </div>
         </Drawer>
     )

@@ -1,10 +1,10 @@
-import { ThemeProvider, CssBaseline } from '@material-ui/core'
-import { createTheme } from '@material-ui/core/styles'
-// import { blue } from '@material-ui/core/colors'
+import { ThemeProvider, StyledEngineProvider, CssBaseline } from '@mui/material'
+import { createTheme } from '@mui/material/styles'
+// import { blue } from '@mui/material/colors'
 
 export const theme = createTheme({
     palette: {
-        type: 'light',
+        mode: 'light',
         primary: {
             main: '#FFF',
             light: '#F2F2F2',
@@ -12,10 +12,7 @@ export const theme = createTheme({
             contrastText: '#2D3748',
         },
         secondary: {
-            main: '#3F51B5',
-        },
-        action: {
-            main: '#F0E5CF',
+            main: '#3483fa',
         },
         text: {
             primary: '#2D3748',
@@ -47,9 +44,11 @@ export const theme = createTheme({
 
 export const Theme = ({ children }) => {
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                {children}
+            </ThemeProvider>
+        </StyledEngineProvider>
     )
 }

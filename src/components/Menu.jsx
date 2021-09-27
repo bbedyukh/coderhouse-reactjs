@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { Link } from 'react-router-dom'
 import {
     Typography,
@@ -7,7 +7,7 @@ import {
     List,
     ListItem,
     ListItemText,
-} from '@material-ui/core'
+} from '@mui/material'
 
 const links = {
     foods: [
@@ -54,8 +54,7 @@ export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
                 horizontal: 'center',
             }}
             elevation={3}
-            onClick={onHandleClose}
-        >
+            onClick={onHandleClose}>
             <Grid container>
                 <Grid item>
                     <List className={classes.list} dense>
@@ -72,8 +71,7 @@ export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
                             <Link
                                 to={`/category/${food.toLowerCase()}`}
                                 className={classes.link}
-                                key={food}
-                            >
+                                key={food}>
                                 <ListItem>
                                     <ListItemText primary={`${food}`} />
                                 </ListItem>
@@ -96,8 +94,7 @@ export const Menu = ({ isMenuOpen, anchorEl, onHandleClose }) => {
                             <Link
                                 to={`/category/${drink.toLowerCase()}`}
                                 className={classes.link}
-                                key={drink}
-                            >
+                                key={drink}>
                                 <ListItem>
                                     <ListItemText primary={`${drink}`} />
                                 </ListItem>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { withStyles, makeStyles } from '@material-ui/core/styles'
-import { Switch, Avatar } from '@material-ui/core'
-import LightIcon from '@material-ui/icons/Brightness2'
-import DarkIcon from '@material-ui/icons/Brightness5'
+import { withStyles, makeStyles } from '@mui/styles'
+import { Switch, Avatar } from '@mui/material'
+import LightIcon from '@mui/icons-material/Brightness2'
+import DarkIcon from '@mui/icons-material/Brightness5'
 
 const IOSSwitch = withStyles(theme => ({
     root: {

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
     Box,
     AppBar,
@@ -11,14 +11,17 @@ import {
     Container,
     Avatar,
     Divider,
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+    LinearProgress,
+} from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import DonBoedoLogo from '../../assets/images/logo-black.png'
-import { SwitchCustom } from '../Custom/SwitchCustom'
+import { SwitchCustom } from '../Customs/SwitchCustom'
 import { CartWidget } from '../Cart/CartWidget'
 import { CartDrawer } from '../Cart/CartDrawer'
 import { Menu } from '../Menu'
+import { useCartContext } from '../../contexts/CartContext'
+import { useLoadingContext } from '../../contexts/LoadingContext'
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -29,9 +32,10 @@ const useStyles = makeStyles(theme => ({
 export const Header = () => {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = useState(null)
-    const [count, setCount] = useState(0)
     const [cartDrawer, setCartDrawer] = useState(false)
     const isMenuOpen = Boolean(anchorEl)
+    const { isLoading } = useLoadingContext()
+    const { cart, totalCount, setTotalCount } = useCartContext()
 
     const handleOpen = () => {
         setCartDrawer(!cartDrawer)
@@ -44,6 +48,12 @@ export const Header = () => {
     const onHandleClose = () => {
         setAnchorEl(null)
     }
+
+    useEffect(() => {
+        let totalQuantity = 0
+        cart?.forEach(i => (totalQuantity += i.quantity))
+        setTotalCount(totalQuantity)
+    }, [cart, setTotalCount])
 
     return (
         <AppBar position='static' elevation={0} color='primary'>
@@ -59,7 +69,10 @@ export const Header = () => {
                     </Box>
 
                     <Box display={{ xs: 'inline', sm: 'none' }}>
-                        <IconButton color='inherit' aria-label='menu'>
+                        <IconButton
+                            color='inherit'
+                            aria-label='menu'
+                            size='large'>
                             <MenuIcon />
                         </IconButton>
                     </Box>
@@ -67,11 +80,9 @@ export const Header = () => {
                     <Box display={{ xs: 'none', sm: 'inline' }}>
                         <SwitchCustom />
                         <Button
-                            aria-controls='simple-menu'
-                            aria-haspopup='true'
+                            color='inherit'
                             onClick={handleClick}
-                            endIcon={<ArrowDropDownIcon />}
-                        >
+                            endIcon={<ArrowDropDownIcon />}>
                             Carta digital
                         </Button>
                         <Menu
@@ -80,16 +91,14 @@ export const Header = () => {
                             onHandleClose={onHandleClose}
                         />
                         <CartWidget
-                            item={count}
+                            quantity={totalCount}
                             handleClick={() => setCartDrawer(!cartDrawer)}
                         />
-                        {/* <Button onClick={() => setCount(count + 1)}>
-                            Agregar
-                        </Button> */}
                     </Box>
                 </Toolbar>
             </Container>
             <CartDrawer handleOpen={handleOpen} cartDrawer={cartDrawer} />
+            {isLoading && <LinearProgress color='secondary' />}
             <Divider />
         </AppBar>
     )

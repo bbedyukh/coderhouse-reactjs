@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles'
-import IconButton from '@material-ui/core/IconButton'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import { BadgeCustom } from '../Custom/BadgeCustom'
+import { makeStyles } from '@mui/styles'
+import IconButton from '@mui/material/IconButton'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { BadgeCustom } from '../Customs/BadgeCustom'
 
 const useStyles = makeStyles(theme => ({
     textColor: {
@@ -9,12 +9,12 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export const CartWidget = ({ item, handleClick }) => {
+export const CartWidget = ({ quantity, handleClick }) => {
     const classes = useStyles()
 
     return (
-        <IconButton onClick={handleClick} aria-label='cart'>
-            <BadgeCustom badgeContent={item}>
+        <IconButton onClick={handleClick} aria-label='cart' size='large'>
+            <BadgeCustom badgeContent={quantity}>
                 <ShoppingCartIcon className={classes.textColor} />
             </BadgeCustom>
         </IconButton>

@@ -1,47 +1,57 @@
+import { createContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Box, Container } from '@material-ui/core'
+import { Box, Container } from '@mui/material'
 import { Layout } from './components/Layout/Layout'
 import { Theme } from './components/Theme/Theme'
-import { ItemListContainer } from './components/ItemList/ItemListContainer'
-import { ItemDetailContainer } from './components/ItemList/ItemDetailContainer'
-import { Home } from './components/Home'
+import { ItemListContainer } from './components/Products/ItemListContainer'
+import { ItemDetailContainer } from './components/Products/ItemDetailContainer'
 import { Cart } from './components/Cart/Cart'
-import React from 'react'
 import { NoMatchRoute } from './components/NoMatchRoute'
+import { CartContextProvider } from './contexts/CartContext'
+import { LoadingContextProvider } from './contexts/LoadingContext'
+export const ContextApp = createContext()
 
 function App() {
     return (
-        <Router>
-            <Theme>
-                <Layout>
-                    <Container>
-                        <Box sx={{ py: 4 }}>
-                            <Switch>
-                                <Route
-                                    exact
-                                    path='/'
-                                    component={ItemListContainer}
-                                />
-                                <Route
-                                    exact
-                                    path='/category/:category'
-                                    component={ItemListContainer}
-                                />
-                                <Route
-                                    exact
-                                    path='/item/:itemId'
-                                    component={ItemDetailContainer}
-                                />
-                                <Route exact path='/cart' component={Cart} />
-                                <Route path='*'>
-                                    <NoMatchRoute />
-                                </Route>
-                            </Switch>
-                        </Box>
-                    </Container>
-                </Layout>
-            </Theme>
-        </Router>
+        <CartContextProvider>
+            <LoadingContextProvider>
+                <Router>
+                    <Theme>
+                        <Layout>
+                            <Container>
+                                <Box sx={{ py: 4 }}>
+                                    <Switch>
+                                        <Route
+                                            exact
+                                            path='/'
+                                            component={ItemListContainer}
+                                        />
+                                        <Route
+                                            exact
+                                            path='/category/:category'
+                                            component={ItemListContainer}
+                                        />
+                                        <Route
+                                            exact
+                                            path='/item/:itemId'
+                                            component={ItemDetailContainer}
+                                        />
+                                        <Route
+                                            exact
+                                            path='/cart'
+                                            component={Cart}
+                                        />
+                                        <Route path='*'>
+                                            <NoMatchRoute />
+                                        </Route>
+                                    </Switch>
+                                </Box>
+                            </Container>
+                        </Layout>
+                    </Theme>
+                </Router>
+            </LoadingContextProvider>
+        </CartContextProvider>
     )
 }
 

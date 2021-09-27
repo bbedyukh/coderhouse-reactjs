@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/core'
+import { Box } from '@mui/material'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -7,8 +7,7 @@ export const Layout = ({ children }) => {
         <Box
             display='flex'
             flexDirection='column'
-            style={{ minHeight: '100vh' }}
-        >
+            style={{ minHeight: '100vh' }}>
             <Header />
             {children}
             <Footer />

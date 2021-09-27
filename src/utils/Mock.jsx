@@ -1,8 +1,4 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { ItemList } from './ItemList'
-
-const itemsFromAPI = [
+export const Mock = [
     {
         id: 1,
         category: 'empanadas',
@@ -12,6 +8,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555236178.jpg',
+        stock: 5,
     },
     {
         id: 2,
@@ -22,6 +19,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207899.jpg',
+        stock: 5,
     },
     {
         id: 3,
@@ -32,6 +30,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230009.jpg',
+        stock: 5,
     },
     {
         id: 4,
@@ -42,6 +41,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207885.jpg',
+        stock: 5,
     },
     {
         id: 5,
@@ -51,6 +51,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203994.jpg',
+        stock: 5,
     },
     {
         id: 6,
@@ -60,6 +61,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207875.jpg',
+        stock: 5,
     },
     {
         id: 7,
@@ -69,6 +71,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207833.jpg',
+        stock: 5,
     },
     {
         id: 8,
@@ -78,6 +81,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203970.jpg',
+        stock: 5,
     },
     {
         id: 9,
@@ -87,6 +91,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207848.jpg',
+        stock: 5,
     },
     {
         id: 10,
@@ -96,6 +101,7 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207823.jpg',
+        stock: 5,
     },
     {
         id: 11,
@@ -105,8 +111,8 @@ const itemsFromAPI = [
         price: 95,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228045.jpg',
+        stock: 5,
     },
-
     {
         id: 12,
         category: 'pizzas',
@@ -115,6 +121,7 @@ const itemsFromAPI = [
         price: 650,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228383.jpg',
+        stock: 5,
     },
     {
         id: 13,
@@ -124,6 +131,7 @@ const itemsFromAPI = [
         price: 740,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480256273.jpg',
+        stock: 5,
     },
     {
         id: 14,
@@ -133,6 +141,7 @@ const itemsFromAPI = [
         price: 740,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480261320.jpg',
+        stock: 5,
     },
     {
         id: 15,
@@ -142,6 +151,7 @@ const itemsFromAPI = [
         price: 800,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230939.jpg',
+        stock: 5,
     },
     {
         id: 16,
@@ -151,6 +161,7 @@ const itemsFromAPI = [
         price: 820,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482883674.jpg',
+        stock: 5,
     },
     {
         id: 17,
@@ -160,6 +171,7 @@ const itemsFromAPI = [
         price: 820,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230929.jpg',
+        stock: 5,
     },
     {
         id: 18,
@@ -169,6 +181,7 @@ const itemsFromAPI = [
         price: 800,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236996.jpg',
+        stock: 5,
     },
     {
         id: 19,
@@ -178,6 +191,7 @@ const itemsFromAPI = [
         price: 840,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480275596.jpg',
+        stock: 5,
     },
     {
         id: 20,
@@ -187,6 +201,7 @@ const itemsFromAPI = [
         price: 740,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480256055.jpg',
+        stock: 5,
     },
     {
         id: 21,
@@ -196,8 +211,8 @@ const itemsFromAPI = [
         price: 740,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230561.jpg',
+        stock: 5,
     },
-
     {
         id: 22,
         category: 'calzones',
@@ -206,8 +221,8 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228246.jpg',
+        stock: 5,
     },
-
     {
         id: 23,
         category: 'calzones',
@@ -216,6 +231,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230268.jpg',
+        stock: 5,
     },
     {
         id: 24,
@@ -226,6 +242,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230258.jpg',
+        stock: 5,
     },
     {
         id: 25,
@@ -235,6 +252,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212737.jpg',
+        stock: 5,
     },
     {
         id: 26,
@@ -244,6 +262,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228231.jpg',
+        stock: 5,
     },
     {
         id: 27,
@@ -253,6 +272,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230268.jpg',
+        stock: 5,
     },
     {
         id: 28,
@@ -262,6 +282,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230278.jpg',
+        stock: 5,
     },
     {
         id: 29,
@@ -271,6 +292,7 @@ const itemsFromAPI = [
         price: 140,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203890.jpg',
+        stock: 5,
     },
     {
         id: 30,
@@ -280,6 +302,7 @@ const itemsFromAPI = [
         price: 140,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203900.jpg',
+        stock: 5,
     },
     {
         id: 31,
@@ -289,6 +312,7 @@ const itemsFromAPI = [
         price: 90,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203905.jpg',
+        stock: 5,
     },
     {
         id: 32,
@@ -298,6 +322,7 @@ const itemsFromAPI = [
         price: 140,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212448.jpg',
+        stock: 5,
     },
     {
         id: 33,
@@ -307,6 +332,7 @@ const itemsFromAPI = [
         price: 170,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204944.jpg',
+        stock: 5,
     },
     {
         id: 34,
@@ -316,6 +342,7 @@ const itemsFromAPI = [
         price: 170,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203865.jpg',
+        stock: 5,
     },
     {
         id: 35,
@@ -325,6 +352,7 @@ const itemsFromAPI = [
         price: 140,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203880.jpg',
+        stock: 5,
     },
     {
         id: 36,
@@ -334,6 +362,7 @@ const itemsFromAPI = [
         price: 170,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203915.jpg',
+        stock: 5,
     },
     {
         id: 37,
@@ -343,8 +372,8 @@ const itemsFromAPI = [
         price: 140,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203920.jpg',
+        stock: 5,
     },
-
     {
         id: 38,
         category: 'cocina',
@@ -353,6 +382,7 @@ const itemsFromAPI = [
         price: 200,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212562.jpg',
+        stock: 5,
     },
     {
         id: 39,
@@ -362,6 +392,7 @@ const itemsFromAPI = [
         price: 200,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212557.jpg',
+        stock: 5,
     },
     {
         id: 40,
@@ -371,6 +402,7 @@ const itemsFromAPI = [
         price: 430,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230243.jpg',
+        stock: 5,
     },
     {
         id: 41,
@@ -380,6 +412,7 @@ const itemsFromAPI = [
         price: 430,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1510078191.jpg',
+        stock: 5,
     },
     {
         id: 42,
@@ -389,6 +422,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236523.jpg',
+        stock: 5,
     },
     {
         id: 43,
@@ -398,6 +432,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230236.jpg',
+        stock: 5,
     },
     {
         id: 44,
@@ -407,6 +442,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1511403004.jpg',
+        stock: 5,
     },
     {
         id: 45,
@@ -416,6 +452,7 @@ const itemsFromAPI = [
         price: 450,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203920.jpg',
+        stock: 5,
     },
     {
         id: 46,
@@ -425,6 +462,7 @@ const itemsFromAPI = [
         price: 450,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1511403004.jpg',
+        stock: 5,
     },
     {
         id: 47,
@@ -434,6 +472,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1831177052.jpg',
+        stock: 5,
     },
     {
         id: 48,
@@ -443,6 +482,7 @@ const itemsFromAPI = [
         price: 480,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555055541.jpg',
+        stock: 5,
     },
     {
         id: 49,
@@ -452,6 +492,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555055541.jpg',
+        stock: 5,
     },
     {
         id: 50,
@@ -461,6 +502,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555070293.jpg',
+        stock: 5,
     },
     {
         id: 51,
@@ -470,6 +512,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555150426.jpg',
+        stock: 5,
     },
     {
         id: 52,
@@ -479,6 +522,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555085099.jpg',
+        stock: 5,
     },
     {
         id: 53,
@@ -489,6 +533,7 @@ const itemsFromAPI = [
         price: 450,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230221.jpg',
+        stock: 5,
     },
     {
         id: 54,
@@ -498,6 +543,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236513.jpg',
+        stock: 5,
     },
     {
         id: 55,
@@ -507,6 +553,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555129735.jpg',
+        stock: 5,
     },
     {
         id: 56,
@@ -516,6 +563,7 @@ const itemsFromAPI = [
         price: 650,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555129907.jpg',
+        stock: 5,
     },
     {
         id: 57,
@@ -525,6 +573,7 @@ const itemsFromAPI = [
         price: 650,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1555130905.jpg',
+        stock: 5,
     },
     {
         id: 58,
@@ -534,6 +583,7 @@ const itemsFromAPI = [
         price: 630,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236503.jpg',
+        stock: 5,
     },
     {
         id: 59,
@@ -543,6 +593,7 @@ const itemsFromAPI = [
         price: 580,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230124.jpg',
+        stock: 5,
     },
     {
         id: 60,
@@ -552,6 +603,7 @@ const itemsFromAPI = [
         price: 630,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228131.jpg',
+        stock: 5,
     },
     {
         id: 61,
@@ -561,6 +613,7 @@ const itemsFromAPI = [
         price: 600,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230076.jpg',
+        stock: 5,
     },
     {
         id: 62,
@@ -570,6 +623,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236373.jpg',
+        stock: 5,
     },
     {
         id: 63,
@@ -579,6 +633,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236363.jpg',
+        stock: 5,
     },
     {
         id: 64,
@@ -588,6 +643,7 @@ const itemsFromAPI = [
         price: 660,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228106.jpg',
+        stock: 5,
     },
     {
         id: 65,
@@ -597,6 +653,7 @@ const itemsFromAPI = [
         price: 800,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228089.jpg',
+        stock: 5,
     },
     {
         id: 66,
@@ -606,6 +663,7 @@ const itemsFromAPI = [
         price: 780,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480230049.jpg',
+        stock: 5,
     },
     {
         id: 67,
@@ -615,6 +673,7 @@ const itemsFromAPI = [
         price: 780,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212606.jpg',
+        stock: 5,
     },
     {
         id: 68,
@@ -624,6 +683,7 @@ const itemsFromAPI = [
         price: 780,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212601.jpg',
+        stock: 5,
     },
     {
         id: 69,
@@ -633,6 +693,7 @@ const itemsFromAPI = [
         price: 780,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207924.jpg',
+        stock: 5,
     },
     {
         id: 70,
@@ -642,6 +703,7 @@ const itemsFromAPI = [
         price: 890,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212577.jpg',
+        stock: 5,
     },
     {
         id: 71,
@@ -651,6 +713,7 @@ const itemsFromAPI = [
         price: 950,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207914.jpg',
+        stock: 5,
     },
     {
         id: 72,
@@ -660,6 +723,7 @@ const itemsFromAPI = [
         price: 570,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204864.jpg',
+        stock: 5,
     },
     {
         id: 73,
@@ -669,6 +733,7 @@ const itemsFromAPI = [
         price: 590,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204854.jpg',
+        stock: 5,
     },
     {
         id: 74,
@@ -678,6 +743,7 @@ const itemsFromAPI = [
         price: 570,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204849.jpg',
+        stock: 5,
     },
     {
         id: 75,
@@ -687,6 +753,7 @@ const itemsFromAPI = [
         price: 610,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212350.jpg',
+        stock: 5,
     },
     {
         id: 76,
@@ -696,6 +763,7 @@ const itemsFromAPI = [
         price: 570,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212330.jpg',
+        stock: 5,
     },
     {
         id: 77,
@@ -705,6 +773,7 @@ const itemsFromAPI = [
         price: 610,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212340.jpg',
+        stock: 5,
     },
     {
         id: 78,
@@ -714,6 +783,7 @@ const itemsFromAPI = [
         price: 570,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204809.jpg',
+        stock: 5,
     },
     {
         id: 79,
@@ -723,6 +793,7 @@ const itemsFromAPI = [
         price: 610,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204824.jpg',
+        stock: 5,
     },
     {
         id: 80,
@@ -732,6 +803,7 @@ const itemsFromAPI = [
         price: 600,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204799.jpg',
+        stock: 5,
     },
     {
         id: 81,
@@ -741,6 +813,7 @@ const itemsFromAPI = [
         price: 640,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203775.jpg',
+        stock: 5,
     },
     {
         id: 82,
@@ -750,6 +823,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203955.jpg',
+        stock: 5,
     },
     {
         id: 83,
@@ -759,6 +833,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203950.jpg',
+        stock: 5,
     },
     {
         id: 84,
@@ -768,6 +843,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1575993261.jpg',
+        stock: 5,
     },
     {
         id: 85,
@@ -777,6 +853,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1575987407.jpg',
+        stock: 5,
     },
     {
         id: 86,
@@ -786,6 +863,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204996.jpg',
+        stock: 5,
     },
     {
         id: 87,
@@ -795,6 +873,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204984.jpg',
+        stock: 5,
     },
     {
         id: 88,
@@ -804,6 +883,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1575996383.jpg',
+        stock: 5,
     },
     {
         id: 89,
@@ -813,6 +893,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1575993757.jpg',
+        stock: 5,
     },
     {
         id: 90,
@@ -822,6 +903,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1483039597.jpg',
+        stock: 5,
     },
     {
         id: 91,
@@ -831,6 +913,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480228015.jpg',
+        stock: 5,
     },
     {
         id: 92,
@@ -840,6 +923,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1576000510.jpg',
+        stock: 5,
     },
     {
         id: 93,
@@ -849,6 +933,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1576000638.jpg',
+        stock: 5,
     },
     {
         id: 94,
@@ -858,6 +943,7 @@ const itemsFromAPI = [
         price: 450,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482900774.jpg',
+        stock: 5,
     },
     {
         id: 95,
@@ -867,6 +953,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482883931.jpg',
+        stock: 5,
     },
     {
         id: 96,
@@ -876,6 +963,7 @@ const itemsFromAPI = [
         price: 490,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482898327.jpg',
+        stock: 5,
     },
     {
         id: 97,
@@ -886,6 +974,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482900360.jpg',
+        stock: 5,
     },
     {
         id: 98,
@@ -896,6 +985,7 @@ const itemsFromAPI = [
         price: 590,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482898444.jpg',
+        stock: 5,
     },
     {
         id: 99,
@@ -906,6 +996,7 @@ const itemsFromAPI = [
         price: 580,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482905234.jpg',
+        stock: 5,
     },
     {
         id: 100,
@@ -915,6 +1006,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212255.jpg',
+        stock: 5,
     },
     {
         id: 101,
@@ -924,6 +1016,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480212255.jpg',
+        stock: 5,
     },
     {
         id: 102,
@@ -933,6 +1026,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207612.jpg',
+        stock: 5,
     },
     {
         id: 103,
@@ -942,6 +1036,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204769.jpg',
+        stock: 5,
     },
     {
         id: 104,
@@ -951,6 +1046,7 @@ const itemsFromAPI = [
         price: 600,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203714.jpg',
+        stock: 5,
     },
     {
         id: 105,
@@ -960,6 +1056,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203724.jpg',
+        stock: 5,
     },
     {
         id: 106,
@@ -969,6 +1066,7 @@ const itemsFromAPI = [
         price: 190,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480203834.jpg',
+        stock: 5,
     },
     {
         id: 107,
@@ -978,6 +1076,7 @@ const itemsFromAPI = [
         price: 190,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207706.jpg',
+        stock: 5,
     },
     {
         id: 108,
@@ -987,6 +1086,7 @@ const itemsFromAPI = [
         price: 300,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480204879.jpg',
+        stock: 5,
     },
     {
         id: 109,
@@ -996,6 +1096,7 @@ const itemsFromAPI = [
         price: 190,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480207681.jpg',
+        stock: 5,
     },
     {
         id: 110,
@@ -1005,6 +1106,7 @@ const itemsFromAPI = [
         price: 150,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476483740.jpg',
+        stock: 5,
     },
     {
         id: 111,
@@ -1014,6 +1116,7 @@ const itemsFromAPI = [
         price: 150,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476491343.jpg',
+        stock: 5,
     },
     {
         id: 112,
@@ -1023,6 +1126,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476479280.jpg',
+        stock: 5,
     },
     {
         id: 113,
@@ -1032,6 +1136,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476479969.jpg',
+        stock: 5,
     },
     {
         id: 114,
@@ -1041,6 +1146,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476491219.jpg',
+        stock: 5,
     },
     {
         id: 115,
@@ -1050,6 +1156,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476483154.jpg',
+        stock: 5,
     },
     {
         id: 116,
@@ -1059,6 +1166,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476468889.jpg',
+        stock: 5,
     },
     {
         id: 117,
@@ -1069,6 +1177,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476483293.jpg',
+        stock: 5,
     },
     {
         id: 118,
@@ -1079,6 +1188,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1482937112.jpg',
+        stock: 5,
     },
     {
         id: 119,
@@ -1089,6 +1199,7 @@ const itemsFromAPI = [
         price: 240,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1498859934.jpg',
+        stock: 5,
     },
     {
         id: 120,
@@ -1098,6 +1209,7 @@ const itemsFromAPI = [
         price: 180,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476498210.jpg',
+        stock: 5,
     },
     {
         id: 121,
@@ -1107,6 +1219,7 @@ const itemsFromAPI = [
         price: 200,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476489507.jpg',
+        stock: 5,
     },
     {
         id: 122,
@@ -1116,6 +1229,7 @@ const itemsFromAPI = [
         price: 260,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476498463.jpg',
+        stock: 5,
     },
     {
         id: 123,
@@ -1125,6 +1239,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476510000.jpg',
+        stock: 5,
     },
     {
         id: 124,
@@ -1134,6 +1249,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476498215.jpg',
+        stock: 5,
     },
     {
         id: 125,
@@ -1143,6 +1259,7 @@ const itemsFromAPI = [
         price: 340,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478706476.jpg',
+        stock: 5,
     },
     {
         id: 126,
@@ -1152,6 +1269,7 @@ const itemsFromAPI = [
         price: 340,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478697717.jpg',
+        stock: 5,
     },
     {
         id: 127,
@@ -1161,6 +1279,7 @@ const itemsFromAPI = [
         price: 340,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476489601.jpg',
+        stock: 5,
     },
     {
         id: 128,
@@ -1170,6 +1289,7 @@ const itemsFromAPI = [
         price: 340,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1476483844.jpg',
+        stock: 5,
     },
     {
         id: 129,
@@ -1179,6 +1299,7 @@ const itemsFromAPI = [
         price: 360,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478706330.jpg',
+        stock: 5,
     },
     {
         id: 130,
@@ -1188,6 +1309,7 @@ const itemsFromAPI = [
         price: 360,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478706306.jpg',
+        stock: 5,
     },
     {
         id: 131,
@@ -1197,6 +1319,7 @@ const itemsFromAPI = [
         price: 360,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478696576.jpg',
+        stock: 5,
     },
     {
         id: 132,
@@ -1206,6 +1329,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1479117548.jpg',
+        stock: 5,
     },
     {
         id: 133,
@@ -1215,6 +1339,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1479118690.jpg',
+        stock: 5,
     },
     {
         id: 134,
@@ -1224,6 +1349,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1479117671.jpg',
+        stock: 5,
     },
     {
         id: 135,
@@ -1233,6 +1359,7 @@ const itemsFromAPI = [
         price: 380,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1479117661.jpg',
+        stock: 5,
     },
     {
         id: 136,
@@ -1242,8 +1369,8 @@ const itemsFromAPI = [
         price: 250,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681934.jpg',
+        stock: 5,
     },
-
     {
         id: 137,
         category: 'vinos',
@@ -1252,6 +1379,7 @@ const itemsFromAPI = [
         price: 150,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1480236647.jpg',
+        stock: 5,
     },
     {
         id: 138,
@@ -1261,6 +1389,7 @@ const itemsFromAPI = [
         price: 250,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681554.jpg',
+        stock: 5,
     },
     {
         id: 139,
@@ -1270,6 +1399,7 @@ const itemsFromAPI = [
         price: 600,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491413268.jpg',
+        stock: 5,
     },
     {
         id: 140,
@@ -1279,6 +1409,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491408846.jpg',
+        stock: 5,
     },
     {
         id: 141,
@@ -1288,6 +1419,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478670053.jpg',
+        stock: 5,
     },
     {
         id: 142,
@@ -1297,6 +1429,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681066.jpg',
+        stock: 5,
     },
     {
         id: 143,
@@ -1306,6 +1439,7 @@ const itemsFromAPI = [
         price: 600,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478636683.jpg',
+        stock: 5,
     },
     {
         id: 144,
@@ -1315,6 +1449,7 @@ const itemsFromAPI = [
         price: 450,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478644277.jpg',
+        stock: 5,
     },
     {
         id: 145,
@@ -1324,6 +1459,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478630732.jpg',
+        stock: 5,
     },
     {
         id: 146,
@@ -1333,6 +1469,7 @@ const itemsFromAPI = [
         price: 500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478648514.jpg',
+        stock: 5,
     },
     {
         id: 147,
@@ -1342,6 +1479,7 @@ const itemsFromAPI = [
         price: 1200,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478644013.jpg',
+        stock: 5,
     },
     {
         id: 148,
@@ -1351,6 +1489,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478681371.jpg',
+        stock: 5,
     },
     {
         id: 149,
@@ -1360,6 +1499,7 @@ const itemsFromAPI = [
         price: 550,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478645380.jpg',
+        stock: 5,
     },
     {
         id: 150,
@@ -1369,6 +1509,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1491406608.jpg',
+        stock: 5,
     },
     {
         id: 151,
@@ -1378,6 +1519,7 @@ const itemsFromAPI = [
         price: 400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478646796.jpg',
+        stock: 5,
     },
     {
         id: 152,
@@ -1387,6 +1529,7 @@ const itemsFromAPI = [
         price: 1500,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478646464.jpg',
+        stock: 5,
     },
     {
         id: 153,
@@ -1396,6 +1539,7 @@ const itemsFromAPI = [
         price: 100,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478645796.jpg',
+        stock: 5,
     },
     {
         id: 154,
@@ -1405,6 +1549,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478659160.jpg',
+        stock: 5,
     },
     {
         id: 155,
@@ -1414,6 +1559,7 @@ const itemsFromAPI = [
         price: 1000,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478648269.jpg',
+        stock: 5,
     },
     {
         id: 156,
@@ -1423,6 +1569,7 @@ const itemsFromAPI = [
         price: 700,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478659688.jpg',
+        stock: 5,
     },
     {
         id: 157,
@@ -1432,6 +1579,7 @@ const itemsFromAPI = [
         price: 800,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478670113.jpg',
+        stock: 5,
     },
     {
         id: 158,
@@ -1441,41 +1589,6 @@ const itemsFromAPI = [
         price: 1400,
         pictureUrl:
             'https://d2j6dbq0eux0bg.cloudfront.net/images/29948464/1478644922.jpg',
+        stock: 5,
     },
 ]
-
-const getItems = () =>
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(itemsFromAPI)
-        }, 1000)
-    })
-
-export const ItemListContainer = () => {
-    const [items, setItems] = useState([])
-    const [isLoading, setLoading] = useState(false)
-    const { category } = useParams()
-
-    useEffect(() => {
-        setLoading(true)
-        if (category) {
-            getItems()
-                .then(result => {
-                    setItems(result.filter(i => i.category === category))
-                })
-                .catch(err => console.error(err))
-                .finally(() => setLoading(false))
-        } else {
-            getItems()
-                .then(result => {
-                    setItems(result)
-                })
-                .catch(err => console.error(err))
-                .finally(() => setLoading(false))
-        }
-    }, [category])
-
-    return (
-        <ItemList items={items} stock={5} initial={1} isLoading={isLoading} />
-    )
-}

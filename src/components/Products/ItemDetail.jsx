@@ -1,20 +1,24 @@
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/styles/'
+import { makeStyles } from '@mui/styles'
 import {
     Paper,
     Box,
     CardMedia,
-    Snackbar,
     Typography,
     Grid,
     InputBase,
     IconButton,
     Button,
-} from '@material-ui/core'
-import MuiAlert from '@material-ui/lab/Alert'
-import RemoveIcon from '@material-ui/icons/Remove'
-import AddIcon from '@material-ui/icons/Add'
+    Breadcrumbs,
+} from '@mui/material'
+import RemoveIcon from '@mui/icons-material/Remove'
+import AddIcon from '@mui/icons-material/Add'
+import { useCartContext } from '../../contexts/CartContext'
 import { Link } from 'react-router-dom'
+import { Capitalize } from '../../utils/Helpers'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { grey } from '@mui/material/colors'
+import { SnackbarCustom } from '../Customs/SnackbarCustom'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -38,36 +42,39 @@ const useStyles = makeStyles(theme => ({
     typography: {
         fontWeight: 600,
     },
-    link: {
-        textDecoration: 'none',
-    },
 }))
 
-export const ItemDetail = ({ item, stock, initial }) => {
+export const ItemDetail = ({ item, initial }) => {
     const classes = useStyles()
     const [quantity, setQuantity] = useState(initial)
+    const [availableStock, setAvailableStock] = useState(item.stock)
     const [isAddedToCart, setAddedToCart] = useState(false)
-    const [inStock, setInStock] = useState(stock)
+    const { addToCart } = useCartContext()
     const [notification, setNotification] = useState({ open: false, text: '' })
 
+    const onAdd = () => {
+        addToCart({ item: item, quantity: quantity })
+        setAddedToCart(true)
+        setAvailableStock(availableStock - quantity)
+        setQuantity(initial)
+        setNotification({
+            open: true,
+            text: `Se ${quantity > 1 ? 'han' : 'ha'} agregado ${quantity} ${
+                quantity === 1 ? 'un/a' : ''
+            } ${
+                quantity === 1
+                    ? item.category.substring(0, item.category.length - 1)
+                    : item.category
+            } de ${item.title} al carrito.`,
+        })
+    }
+
     const increaseQuantity = () => {
-        if (quantity < inStock) setQuantity(quantity + 1)
+        if (quantity < availableStock) setQuantity(quantity + 1)
     }
 
     const decreaseQuantity = () => {
         if (quantity > 1) setQuantity(quantity - 1)
-    }
-
-    const addToCart = () => {
-        setAddedToCart(true)
-        setInStock(inStock - quantity)
-        setQuantity(quantity)
-        setNotification({
-            open: true,
-            text: `Se ${quantity > 1 ? 'han' : 'ha'} agregado ${quantity} ${
-                item.category
-            } de ${item.title} al carrito.`,
-        })
     }
 
     const closeNotification = (event, reason) => {
@@ -80,22 +87,33 @@ export const ItemDetail = ({ item, stock, initial }) => {
         }))
     }
 
-    const Alert = props => {
-        return <MuiAlert elevation={6} variant='filled' {...props} />
-    }
-
     return (
         <>
-            <Snackbar
-                open={notification.open}
-                autoHideDuration={4000}
+            <SnackbarCustom
                 onClose={closeNotification}
-            >
-                <Alert onClose={closeNotification} severity='success'>
-                    {notification.text}
-                </Alert>
-            </Snackbar>
+                open={notification.open}
+                text={notification.text}
+            />
             <Paper>
+                <Box p={2} bgcolor='#f5f5f5'>
+                    <Breadcrumbs
+                        aria-label='breadcrumb'
+                        separator={
+                            <KeyboardArrowRightIcon
+                                fontSize='small'
+                                sx={{ color: grey[500] }}
+                            />
+                        }
+                        sx={{ fontSize: 13 }}>
+                        <Link to='/'>Home</Link>
+                        <Link to={`/category/${item.category}`}>
+                            {Capitalize(item.category)}
+                        </Link>
+                        <Typography sx={{ fontSize: 13 }}>
+                            {Capitalize(item.title)}
+                        </Typography>
+                    </Breadcrumbs>
+                </Box>
                 <Box p={5}>
                     <Grid container justifyContent='center' spacing={5}>
                         <Grid item xs={12} sm={9}>
@@ -112,36 +130,31 @@ export const ItemDetail = ({ item, stock, initial }) => {
                             direction='column'
                             spacing={2}
                             xs={12}
-                            sm={3}
-                        >
+                            sm={3}>
                             <Grid item>
                                 <Typography
                                     variant='h5'
-                                    className={classes.typography}
-                                >
+                                    className={classes.typography}>
                                     {item.title}
                                 </Typography>
                                 <Typography
                                     variant='caption'
-                                    className={classes.typography}
-                                >
+                                    className={classes.typography}>
                                     {item.description}
                                 </Typography>
                             </Grid>
                             <Grid item>
                                 <Typography
                                     variant='h4'
-                                    className={classes.typography}
-                                >
+                                    className={classes.typography}>
                                     ${item.price}
                                 </Typography>
                             </Grid>
                             <Grid item>
                                 <Typography
                                     variant='subtitle2'
-                                    className={classes.typography}
-                                >
-                                    {inStock <= 0
+                                    className={classes.typography}>
+                                    {availableStock === 0
                                         ? 'Sin stock'
                                         : 'Stock disponible'}
                                 </Typography>
@@ -150,30 +163,31 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                 item
                                 container
                                 alignItems='center'
-                                spacing={2}
-                            >
+                                spacing={2}>
                                 <Grid item xs={12}>
                                     <Paper
                                         className={classes.paper}
                                         elevation={0}
-                                        variant='outlined'
-                                    >
+                                        variant='outlined'>
                                         <IconButton
                                             onClick={decreaseQuantity}
                                             className={classes.iconButton}
                                             aria-label='decrease'
                                             disabled={
-                                                inStock <= 0 || quantity === 1
+                                                availableStock === 0 ||
+                                                quantity === 1
                                             }
-                                        >
+                                            size='large'>
                                             <RemoveIcon />
                                         </IconButton>
                                         <InputBase
                                             inputProps={{
-                                                style: { textAlign: 'center' },
+                                                style: {
+                                                    textAlign: 'center',
+                                                },
                                             }}
                                             value={
-                                                inStock <= 0
+                                                availableStock === 0
                                                     ? 'Sin stock'
                                                     : quantity
                                             }
@@ -184,10 +198,10 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                             className={classes.iconButton}
                                             aria-label='increase'
                                             disabled={
-                                                inStock <= 0 ||
-                                                quantity === inStock
+                                                availableStock === 0 ||
+                                                quantity === availableStock
                                             }
-                                        >
+                                            size='large'>
                                             <AddIcon />
                                         </IconButton>
                                     </Paper>
@@ -197,26 +211,21 @@ export const ItemDetail = ({ item, stock, initial }) => {
                                         variant='contained'
                                         color='secondary'
                                         disableElevation
-                                        onClick={addToCart}
-                                        disabled={inStock <= 0}
-                                        fullWidth
-                                    >
-                                        Add to cart
+                                        onClick={onAdd}
+                                        disabled={availableStock === 0}
+                                        fullWidth>
+                                        Agregar al carrito
                                     </Button>
                                 </Grid>
                                 {isAddedToCart && (
                                     <Grid item xs={12}>
-                                        <Link
-                                            to={'/cart'}
-                                            className={classes.link}
-                                        >
+                                        <Link to={'/cart'}>
                                             <Button
                                                 variant='outlined'
                                                 color='secondary'
                                                 disableElevation
-                                                fullWidth
-                                            >
-                                                Finish purchase
+                                                fullWidth>
+                                                Finalizar compra
                                             </Button>
                                         </Link>
                                     </Grid>
