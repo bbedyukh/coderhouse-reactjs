@@ -3,6 +3,7 @@ import { ItemDetail } from './ItemDetail'
 import { useParams } from 'react-router-dom'
 import { useLoadingContext } from '../../contexts/LoadingContext'
 import { Mock } from '../../utils/Mock'
+import { Skeleton } from '@mui/material'
 
 const getItems = () =>
     new Promise(resolve => {
@@ -26,5 +27,18 @@ export const ItemDetailContainer = () => {
             .finally(() => setLoading(false))
     }, [itemId, setLoading])
 
-    return <>{!isLoading && <ItemDetail item={item} initial={1} />}</>
+    return (
+        <>
+            {isLoading ? (
+                <Skeleton
+                    variant='rectangular'
+                    animation='wave'
+                    width='100%'
+                    height='480px'
+                />
+            ) : (
+                <ItemDetail item={item} initial={1} />
+            )}
+        </>
+    )
 }

@@ -3,15 +3,8 @@ import { useParams } from 'react-router-dom'
 import { ItemList } from './ItemList'
 import { useLoadingContext } from '../../contexts/LoadingContext'
 import { Mock } from '../../utils/Mock'
-import { makeStyles } from '@mui/styles'
 import { Grid, Box, Typography, Skeleton } from '@mui/material'
 import { Capitalize } from '../../utils/Helpers'
-
-const useStyles = makeStyles(theme => ({
-    typography: {
-        fontWeight: 600,
-    },
-}))
 
 const getItems = () =>
     new Promise(resolve => {
@@ -21,7 +14,6 @@ const getItems = () =>
     })
 
 export const ItemListContainer = () => {
-    const classes = useStyles()
     const [items, setItems] = useState([])
     const { category } = useParams()
     const { isLoading, setLoading } = useLoadingContext()
@@ -86,7 +78,7 @@ export const ItemListContainer = () => {
                     <Typography
                         align='center'
                         variant='h1'
-                        className={classes.typography}>
+                        sx={{ fontWeight: 600 }}>
                         {Capitalize(category ? category : 'productos')}
                     </Typography>
                     <Box my={5}>
