@@ -2,7 +2,7 @@
 
 Este proyecto está enfocado en realizar pedidos en línea con una amplia cantidad de productos gastronómicos.
 
-![ Alt text](https://i.ibb.co/JrC1G7m/router.gif)
+![ Alt text](./demo.gif)
 
 ### Dependencias extras
 
