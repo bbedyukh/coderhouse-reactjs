@@ -1,4 +1,3 @@
-import { createContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Box, Container } from '@mui/material'
 import { Layout } from './components/Layout/Layout'
@@ -9,7 +8,6 @@ import { Cart } from './components/Cart/Cart'
 import { NoMatchRoute } from './components/NoMatchRoute'
 import { CartContextProvider } from './contexts/CartContext'
 import { LoadingContextProvider } from './contexts/LoadingContext'
-export const ContextApp = createContext()
 
 function App() {
     return (

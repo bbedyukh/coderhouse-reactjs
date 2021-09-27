@@ -78,7 +78,7 @@ export const Header = () => {
                     </Box>
 
                     <Box display={{ xs: 'none', sm: 'inline' }}>
-                        <SwitchCustom />
+                        {/* <SwitchCustom /> */}
                         <Button
                             color='inherit'
                             onClick={handleClick}
