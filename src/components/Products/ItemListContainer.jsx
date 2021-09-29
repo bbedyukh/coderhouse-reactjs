@@ -2,16 +2,9 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ItemList } from './ItemList'
 import { useLoadingContext } from '../../contexts/LoadingContext'
-import { Mock } from '../../utils/Mock'
 import { Grid, Box, Typography, Skeleton } from '@mui/material'
 import { Capitalize } from '../../utils/Helpers'
-
-const getItems = () =>
-    new Promise(resolve => {
-        setTimeout(() => {
-            resolve(Mock)
-        }, 2000)
-    })
+import { getFirestore } from '../../services/getFirebase'
 
 export const ItemListContainer = () => {
     const [items, setItems] = useState([])
@@ -20,18 +13,23 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         setLoading(true)
+        const db = getFirestore()
+        const itemCollection = db.collection('products')
         if (category) {
-            getItems()
-                .then(result => {
-                    setItems(result.filter(i => i.category === category))
-                })
+            itemCollection
+                .where('category', '==', category)
+                .get()
+                .then(result =>
+                    setItems(result.docs.map(i => ({ id: i.id, ...i.data() })))
+                )
                 .catch(err => console.error(err))
                 .finally(() => setLoading(false))
         } else {
-            getItems()
-                .then(result => {
-                    setItems(result)
-                })
+            itemCollection
+                .get()
+                .then(result =>
+                    setItems(result.docs.map(i => ({ id: i.id, ...i.data() })))
+                )
                 .catch(err => console.error(err))
                 .finally(() => setLoading(false))
         }

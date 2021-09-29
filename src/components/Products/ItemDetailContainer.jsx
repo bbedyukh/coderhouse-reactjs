@@ -2,15 +2,8 @@ import { useState, useEffect } from 'react'
 import { ItemDetail } from './ItemDetail'
 import { useParams } from 'react-router-dom'
 import { useLoadingContext } from '../../contexts/LoadingContext'
-import { Mock } from '../../utils/Mock'
 import { Skeleton } from '@mui/material'
-
-const getItems = () =>
-    new Promise(resolve => {
-        setTimeout(() => {
-            resolve(Mock)
-        }, 2000)
-    })
+import { getFirestore } from '../../services/getFirebase'
 
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState([])
@@ -19,10 +12,11 @@ export const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        getItems()
-            .then(result =>
-                setItem(result.find(item => item.id === parseInt(itemId)))
-            )
+        const db = getFirestore()
+        const itemOne = db.collection('products').doc(itemId)
+        itemOne
+            .get()
+            .then(result => setItem({ id: result.id, ...result.data() }))
             .catch(err => console.error(err))
             .finally(() => setLoading(false))
     }, [itemId, setLoading])
