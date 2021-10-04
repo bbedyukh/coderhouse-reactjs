@@ -57,6 +57,7 @@ export const CartContextProvider = ({ children }) => {
                 increaseQuantity,
                 decreaseQuantity,
                 deleteItem,
+                setCart,
             }}>
             {children}
         </CartContext.Provider>

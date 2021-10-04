@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ItemList } from './ItemList'
 import { useLoadingContext } from '../../contexts/LoadingContext'
-import { Grid, Box, Typography, Skeleton } from '@mui/material'
+import { Grid, Box, Typography, Skeleton, Divider } from '@mui/material'
 import { Capitalize } from '../../utils/Helpers'
 import { getFirestore } from '../../services/getFirebase'
 
@@ -46,30 +46,29 @@ export const ItemListContainer = () => {
                             height='10px'
                         />
                     </Box>
-                    <Box my={5}>
-                        <Grid justifyContent='center' container spacing={5}>
-                            {Array.from(Array(12).keys()).map(s => (
-                                <Grid key={s} item>
+                    <Divider sx={{ my: 4 }} />
+                    <Grid justifyContent='center' container spacing={5}>
+                        {Array.from(Array(12).keys()).map(s => (
+                            <Grid key={s} item>
+                                <Skeleton
+                                    animation='wave'
+                                    variant='rectangular'
+                                    width='250px'
+                                    height='250px'
+                                />
+                                <Box
+                                    my={2}
+                                    display='flex'
+                                    justifyContent='center'>
                                     <Skeleton
                                         animation='wave'
-                                        variant='rectangular'
-                                        width='250px'
-                                        height='250px'
+                                        width='200px'
+                                        height='10px'
                                     />
-                                    <Box
-                                        my={2}
-                                        display='flex'
-                                        justifyContent='center'>
-                                        <Skeleton
-                                            animation='wave'
-                                            width='200px'
-                                            height='10px'
-                                        />
-                                    </Box>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Box>
+                                </Box>
+                            </Grid>
+                        ))}
+                    </Grid>
                 </>
             ) : (
                 <>
@@ -79,11 +78,10 @@ export const ItemListContainer = () => {
                         sx={{ fontWeight: 600 }}>
                         {Capitalize(category ? category : 'productos')}
                     </Typography>
-                    <Box my={5}>
-                        <Grid justifyContent='center' container spacing={5}>
-                            <ItemList items={items} />
-                        </Grid>
-                    </Box>
+                    <Divider sx={{ my: 4 }} />
+                    <Grid justifyContent='center' container spacing={5}>
+                        <ItemList items={items} />
+                    </Grid>
                 </>
             )}
         </>

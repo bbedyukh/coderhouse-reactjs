@@ -11,10 +11,10 @@ import {
     Button,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { grey } from '@mui/material/colors'
 import { useCartContext } from '../../contexts/CartContext'
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
 import { BadgeCustom } from '../Customs/BadgeCustom'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
 const drawerWidth = 375
 
@@ -54,28 +54,30 @@ export const CartDrawer = ({ handleOpen, cartDrawer }) => {
                 paper: classes.drawerPaper,
             }}>
             <div className={classes.drawerContainer}>
-                <Box display='flex' justifyContent='center' py={2}>
-                    <Typography variant='h4' color='inherit'>
-                        Tu carrito
-                    </Typography>
-                </Box>
+                <Stack
+                    direction='row'
+                    justifyContent='center'
+                    alignItems='center'
+                    py={2}
+                    spacing={2}>
+                    <ShoppingCartIcon />
+                    <Typography variant='h4'>Tu carrito</Typography>
+                </Stack>
                 <Divider />
                 <Box p={3}>
                     {cart.length === 0 ? (
                         <>
                             <Typography
-                                variant='h5'
+                                variant='h6'
                                 sx={{
                                     textAlign: 'center',
-                                    color: grey[600],
                                 }}>
                                 Tu carrito está vacío
                             </Typography>
                             <Typography
-                                variant='body1'
+                                variant='body2'
                                 sx={{
                                     textAlign: 'center',
-                                    color: grey[600],
                                 }}>
                                 ¿No sabés qué comprar? ¡Miles de productos te
                                 esperan!
@@ -113,7 +115,6 @@ export const CartDrawer = ({ handleOpen, cartDrawer }) => {
                                             <Grid item xs={7}>
                                                 <Typography
                                                     variant='subtitle2'
-                                                    color='initial'
                                                     noWrap
                                                     sx={{
                                                         overflow: 'hidden',
@@ -125,7 +126,6 @@ export const CartDrawer = ({ handleOpen, cartDrawer }) => {
                                                 </Typography>
                                                 <Typography
                                                     variant='body2'
-                                                    color='initial'
                                                     noWrap
                                                     sx={{
                                                         overflow: 'hidden',
@@ -156,7 +156,7 @@ export const CartDrawer = ({ handleOpen, cartDrawer }) => {
                                         variant='contained'
                                         color='secondary'
                                         disableElevation>
-                                        Verificar
+                                        Revisar carrito
                                     </Button>
                                 </Link>
                             </Box>

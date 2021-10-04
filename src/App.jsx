@@ -5,6 +5,7 @@ import { Theme } from './components/Theme/Theme'
 import { ItemListContainer } from './components/Products/ItemListContainer'
 import { ItemDetailContainer } from './components/Products/ItemDetailContainer'
 import { Cart } from './components/Cart/Cart'
+import { CartCheckout } from './components/Cart/CartCheckout'
 import { NoMatchRoute } from './components/NoMatchRoute'
 import { CartContextProvider } from './contexts/CartContext'
 import { LoadingContextProvider } from './contexts/LoadingContext'
@@ -38,6 +39,11 @@ function App() {
                                             exact
                                             path='/cart'
                                             component={Cart}
+                                        />
+                                        <Route
+                                            exact
+                                            path='/cart/checkout'
+                                            component={CartCheckout}
                                         />
                                         <Route path='*'>
                                             <NoMatchRoute />

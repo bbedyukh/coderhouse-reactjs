@@ -4,41 +4,20 @@ import { createTheme } from '@mui/material/styles'
 
 export const theme = createTheme({
     palette: {
-        mode: 'light',
+        mode: 'dark',
         primary: {
-            main: '#FFF',
-            light: '#F2F2F2',
-            dark: '#C8C6C6',
-            contrastText: '#2D3748',
+            // main: '#18191A',
+            main: '#242526',
         },
         secondary: {
-            main: '#009ee3',
+            main: '#2D88FF',
         },
         text: {
-            primary: '#2D3748',
+            primary: '#FFF',
         },
     },
     typography: {
         fontFamily: 'Roboto',
-        fontSize: 14,
-        fontWeightLight: 300,
-        fontWeightRegular: 400,
-        fontWeightMedium: 500,
-        fontWeightBold: 700,
-        h1: {
-            fontWeight: 800,
-            fontSize: '3.75rem',
-        },
-        h6: {
-            fontWeight: 700,
-            fontSize: '1rem',
-        },
-        body1: {
-            fontSize: '0.9rem',
-            fontFamily: 'Roboto',
-            fontWeight: 400,
-            lineHeight: 1.5,
-        },
     },
 })
 

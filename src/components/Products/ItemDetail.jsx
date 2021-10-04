@@ -95,7 +95,7 @@ export const ItemDetail = ({ item, initial }) => {
                 text={notification.text}
             />
             <Paper>
-                <Box p={2} bgcolor='#f5f5f5'>
+                <Box p={2} bgcolor='primary.main'>
                     <Breadcrumbs
                         aria-label='breadcrumb'
                         separator={
