@@ -26,12 +26,6 @@ export const Item = ({ item }) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            {/* <Divider />
-            <CardActions sx={{ py: 1, justifyContent: 'center' }}>
-                <Button variant='contained' color='secondary' disableElevation>
-                    Ver detalle
-                </Button>
-            </CardActions> */}
         </Card>
     )
 }

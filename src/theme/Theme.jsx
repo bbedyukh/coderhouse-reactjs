@@ -1,12 +1,10 @@
 import { ThemeProvider, StyledEngineProvider, CssBaseline } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
-// import { blue } from '@mui/material/colors'
 
 export const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            // main: '#18191A',
             main: '#242526',
         },
         secondary: {

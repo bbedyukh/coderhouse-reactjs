@@ -1,12 +1,10 @@
-import { Box, Typography, Link, Divider } from '@mui/material'
+import { Box, Typography, Divider } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const Copyright = () => {
     return (
         <Typography variant='body2' color='textPrimary' align='center'>
-            <Link color='inherit' href='https://material-ui.com/'>
-                Don Boedo
-            </Link>{' '}
-            &reg; {new Date().getFullYear()}
+            <Link to='/'>Restaurant</Link> &reg; {new Date().getFullYear()}
         </Typography>
     )
 }

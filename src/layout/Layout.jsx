@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
-import { Footer } from './Footer'
-import { Header } from './Header'
+import { Footer } from './Footer/Footer'
+import { Header } from './Header/Header'
 
 export const Layout = ({ children }) => {
     return (
