@@ -10,7 +10,6 @@ import {
     Container,
     Avatar,
     Divider,
-    LinearProgress,
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import RestaurantLogo from '../../assets/images/logo.png'
@@ -18,13 +17,11 @@ import { CartWidget } from '../../components/Cart/CartWidget'
 import { CartDrawer } from '../../components/Cart/CartDrawer'
 import { Menu } from './Menu'
 import { useCartContext } from '../../contexts/CartContext'
-import { useLoadingContext } from '../../contexts/LoadingContext'
 
 export const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [cartDrawer, setCartDrawer] = useState(false)
     const isMenuOpen = Boolean(anchorEl)
-    const { isLoading } = useLoadingContext()
     const { cart, totalCount, setTotalCount } = useCartContext()
 
     const handleOpen = () => {
@@ -79,7 +76,6 @@ export const Header = () => {
                 </Toolbar>
             </Container>
             <CartDrawer handleOpen={handleOpen} cartDrawer={cartDrawer} />
-            {isLoading && <LinearProgress color='secondary' />}
             <Divider />
         </AppBar>
     )

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ItemList } from './ItemList'
-import { useLoadingContext } from '../../contexts/LoadingContext'
 import { Grid, Box, Typography, Skeleton, Divider } from '@mui/material'
 import { Capitalize } from '../../utils/Helpers'
 import { getFirestore } from '../../services/getFirebase'
@@ -9,7 +8,7 @@ import { getFirestore } from '../../services/getFirebase'
 export const ItemListContainer = () => {
     const [items, setItems] = useState([])
     const { category } = useParams()
-    const { isLoading, setLoading } = useLoadingContext()
+    const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true)

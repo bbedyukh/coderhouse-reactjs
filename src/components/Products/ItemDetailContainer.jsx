@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import { ItemDetail } from './ItemDetail'
 import { useParams } from 'react-router-dom'
-import { useLoadingContext } from '../../contexts/LoadingContext'
 import { Skeleton } from '@mui/material'
 import { getFirestore } from '../../services/getFirebase'
 
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState([])
     const { itemId } = useParams()
-    const { isLoading, setLoading } = useLoadingContext()
+    const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true)

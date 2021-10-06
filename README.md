@@ -1,4 +1,4 @@
-# react e-commerce project
+# Restaurant e-commerce
 
 Este proyecto está enfocado en realizar pedidos en línea con una amplia cantidad de productos gastronómicos.
 
