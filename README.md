@@ -5,7 +5,7 @@ Proyecto hecho en el curso de [FrontEnd ReactJS](https://www.coderhouse.com/onli
 - 8 semanas
 - 2 clases semanales
 
-## Ver [DEMO]()
+## Ver [DEMO](https://bbedyukh-ecommerce.netlify.app/)
 ![ Alt text](./demo.gif)
 
 ## Dependencias extras
