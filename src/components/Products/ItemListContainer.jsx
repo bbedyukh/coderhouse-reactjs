@@ -14,24 +14,17 @@ export const ItemListContainer = () => {
         setLoading(true)
         const db = getFirestore()
         const itemCollection = db.collection('products')
-        if (category) {
-            itemCollection
-                .where('category', '==', category)
-                .get()
-                .then(result =>
-                    setItems(result.docs.map(i => ({ id: i.id, ...i.data() })))
-                )
-                .catch(err => console.error(err))
-                .finally(() => setLoading(false))
-        } else {
-            itemCollection
-                .get()
-                .then(result =>
-                    setItems(result.docs.map(i => ({ id: i.id, ...i.data() })))
-                )
-                .catch(err => console.error(err))
-                .finally(() => setLoading(false))
-        }
+        const query = category
+            ? itemCollection.where('category', '==', category)
+            : itemCollection
+
+        query
+            .get()
+            .then(result =>
+                setItems(result.docs.map(i => ({ id: i.id, ...i.data() })))
+            )
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false))
     }, [category, setLoading])
 
     return (

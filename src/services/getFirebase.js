@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const firebaseConfig = {
+    //apiKey: process.env.APIKEY,
     apiKey: 'AIzaSyAl4Zg2fCLeGMbWKRmVEbvqWfJeB5jRBOM',
     authDomain: 'don-boedo.firebaseapp.com',
     projectId: 'don-boedo',
