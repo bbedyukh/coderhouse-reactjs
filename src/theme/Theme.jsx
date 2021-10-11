@@ -15,6 +15,11 @@ export const theme = createTheme({
         },
     },
     typography: {
+        h1: {
+            '@media (max-width: 600px)': {
+                fontSize: '3rem',
+            },
+        },
         fontFamily: 'Roboto',
     },
 })

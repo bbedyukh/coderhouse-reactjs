@@ -15,6 +15,7 @@ import { useCartContext } from '../../contexts/CartContext'
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
 import { BadgeCustom } from '../Customs/BadgeCustom'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import CloseIcon from '@mui/icons-material/Close'
 
 const drawerWidth = 375
 
@@ -56,12 +57,16 @@ export const CartDrawer = ({ handleOpen, cartDrawer }) => {
             <div className={classes.drawerContainer}>
                 <Stack
                     direction='row'
-                    justifyContent='center'
+                    justifyContent='space-around'
                     alignItems='center'
                     py={2}
                     spacing={2}>
                     <ShoppingCartIcon />
                     <Typography variant='h4'>Tu carrito</Typography>
+                    <CloseIcon
+                        onClick={handleOpen}
+                        sx={{ cursor: 'pointer' }}
+                    />
                 </Stack>
                 <Divider />
                 <Box p={3}>

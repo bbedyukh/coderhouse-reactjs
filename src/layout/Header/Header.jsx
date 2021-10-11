@@ -57,12 +57,14 @@ export const Header = () => {
                         <Typography variant='h6'>Restaurant</Typography>
                     </Box>
                     <Stack direction='row' alignItems='center' spacing={3}>
-                        <Button
-                            color='inherit'
-                            onClick={handleClick}
-                            endIcon={<ArrowDropDownIcon />}>
-                            Carta digital
-                        </Button>
+                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                            <Button
+                                color='inherit'
+                                onClick={handleClick}
+                                endIcon={<ArrowDropDownIcon />}>
+                                Carta digital
+                            </Button>
+                        </Box>
                         <Menu
                             isMenuOpen={isMenuOpen}
                             anchorEl={anchorEl}
